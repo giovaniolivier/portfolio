@@ -1,0 +1,208 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-accent: #8b5cf6;
+  --color-accent-hover: #7c3aed;
+  --color-bg-dark: #000000;
+  --color-card-dark: #0a0a0a;
+
+  /* Light Theme Overrides */
+  --color-bg-light: #ffffff;
+  --color-card-light: #f5f5f7;
+  --color-text-light: #1d1d1f;
+  --color-text-muted-light: #86868b;
+}
+
+@layer base {
+  body {
+    @apply bg-bg-dark text-gray-400 antialiased font-sans cursor-default transition-colors duration-500;
+    letter-spacing: -0.01em;
+  }
+
+  :root.light body {
+    @apply bg-bg-light text-text-muted-light;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-white font-display tracking-tight transition-colors duration-500;
+  }
+
+  :root.light h1, :root.light h2, :root.light h3, :root.light h4, :root.light h5, :root.light h6 {
+    @apply text-text-light;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-white/3 backdrop-blur-xl border border-white/8 shadow-2xl transition-all duration-500;
+  }
+
+  :root.light .glass-panel {
+    @apply bg-black/3 border-black/5;
+  }
+
+  :root.light .bg-card-dark {
+    @apply bg-card-light;
+  }
+
+  :root.light .bg-white\/5 {
+    @apply bg-black/5;
+  }
+
+  :root.light .bg-white\/3 {
+    @apply bg-black/3;
+  }
+
+  :root.light .border-white\/10 {
+    @apply border-black/10;
+  }
+
+  :root.light .border-white\/8 {
+    @apply border-black/8;
+  }
+
+  :root.light .border-white\/5 {
+    @apply border-black/5;
+  }
+
+  :root.light .text-white\/5, :root.light .text-white\/10, :root.light .text-white\/20, :root.light .text-white\/30, :root.light .text-white\/40, :root.light .text-white\/50, :root.light .text-white\/60 {
+    @apply text-black/50;
+  }
+
+  :root.light .text-white {
+    @apply text-black;
+  }
+
+  :root.light input, :root.light textarea {
+    @apply text-black;
+  }
+
+  :root.light .placeholder\:text-white\/10::placeholder {
+    @apply text-black/40;
+  }
+
+  :root.light .text-white\/5 { @apply text-black/5; }
+  :root.light .text-white\/10 { @apply text-black/10; }
+  :root.light .text-white\/20 { @apply text-black/30; }
+  :root.light .text-white\/30 { @apply text-black/40; }
+  :root.light .text-white\/40 { @apply text-black/50; }
+  :root.light .text-white\/50 { @apply text-black/60; }
+  :root.light .text-white\/60 { @apply text-black/70; }
+
+  :root.light [class*="group-hover:text-white"]:hover,
+  :root.light .group:hover [class*="group-hover:text-white"],
+  :root.light [class*="hover:text-white"]:hover {
+    @apply text-black! opacity-100;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-linear-to-b from-white to-white/50 transition-all duration-500;
+  }
+
+  :root.light .text-gradient {
+    @apply from-black to-black/50;
+  }
+
+  :root.light .section-label {
+    @apply bg-black/5 border-black/10;
+  }
+
+  :root.light .btn-secondary {
+    @apply border-black/10 text-black hover:bg-black/5 hover:border-black/20;
+  }
+
+  :root.light .text-gray-300 {
+    @apply text-gray-600;
+  }
+
+  :root.light .text-gray-400 {
+    @apply text-gray-700;
+  }
+
+  :root.light .text-gray-500 {
+    @apply text-gray-800;
+  }
+
+  .bg-main {
+    @apply bg-bg-dark transition-colors duration-500;
+  }
+
+  :root.light .bg-main {
+    @apply bg-bg-light;
+  }
+
+  .loader-text {
+    @apply text-white transition-colors duration-500;
+  }
+
+  :root.light .loader-text {
+    @apply text-black;
+  }
+
+  .grid-bg {
+    @apply absolute inset-0 opacity-20;
+    background-image: linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    mask-image: radial-gradient(ellipse 60% 50% at 50% 0%, #000 70%, transparent 100%);
+  }
+
+  :root.light .grid-bg {
+    background-image: linear-gradient(to right, rgba(0,0,0,0.05) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(0,0,0,0.05) 1px, transparent 1px);
+  }
+
+  .btn-primary {
+    @apply relative px-5 py-2.5 rounded-full bg-white text-black text-sm font-bold overflow-hidden transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)];
+  }
+
+  .btn-secondary {
+    @apply relative px-5 py-2.5 rounded-full border border-white/10 text-white text-sm font-bold transition-all duration-300 hover:bg-white/5 hover:border-white/20;
+  }
+
+  .section-label {
+    @apply inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-white/5 border border-white/10 text-[9px] uppercase font-bold tracking-[0.2em] text-accent mb-4;
+  }
+}
+
+/* Custom Utilities */
+.mask-radial {
+  mask-image: radial-gradient(circle, black, transparent 80%);
+}
+
+.noise-bg {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events: none;
+}
+
+:root.light .noise-bg {
+  opacity: 0.01;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-white/10 rounded-full hover:bg-white/20 transition-colors;
+}
+
+:root.light ::-webkit-scrollbar-thumb {
+  @apply bg-black/10 hover:bg-black/20;
+}
+
+/* Smooth reveal animations */
+.reveal-text {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
