@@ -24,7 +24,7 @@ export const profile = {
     cv: '#',
   },
   stats: {
-    experiences: '07',
+    experiences: '02',
     degrees: '02',
     projects: '07+',
     years: '4+',

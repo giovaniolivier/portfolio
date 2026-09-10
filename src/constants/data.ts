@@ -61,17 +61,13 @@ export const SKILLS: Skill[] = [
   { name: 'Next.js', category: 'Frontend' },
   { name: 'Vue.js', category: 'Frontend' },
   { name: 'Express', category: 'Backend' },
-  { name: 'Django', category: 'Backend' },
   { name: 'Node.js', category: 'Backend' },
   { name: 'SQL', category: 'Backend' },
-  { name: 'Laravel', category: 'Backend' },
   { name: 'MySQL', category: 'Database' },
   { name: 'MongoDB', category: 'Database' },
   { name: 'SQLite', category: 'Database' },
-  { name: 'WordPress', category: 'Tools' },
   { name: 'Git', category: 'Tools' },
   { name: 'Figma', category: 'Tools' },
-  { name: 'Gemini AI', category: 'Tools' },
   { name: 'Adobe XD', category: 'Tools' },
 ];
 
@@ -91,25 +87,11 @@ export const EXPERIENCES: Experience[] = [
     description: 'Développement frontend React/TypeScript pour candidats et recruteurs, intégration API Laravel, réservation de créneaux d\'entretien, paiements en ligne et messagerie temps réel.',
   },
   {
-    id: '1',
-    role: 'Développeur Frontend Mobile — Planity',
-    company: 'Relia Consulting',
-    period: '2025',
-    description: 'Développement interface mobile React Native et TypeScript, composants réutilisables, chat/notifications push et optimisation des performances.',
-  },
-  {
     id: '2',
     role: 'Développeur Frontend — Business Plan Generator',
     company: 'Relia Consulting',
     period: '2025',
     description: 'Interface Next.js/TypeScript, formulaire multi-étapes React Hook Form/Zod, export PDF jsPDF et intégration API Axios.',
-  },
-  {
-    id: '3',
-    role: 'Développeur WordPress',
-    company: 'Odace France',
-    period: '2023 — 2024',
-    description: 'Développement de sites WordPress, extensions personnalisées, optimisation SEO et déploiement WooCommerce pour PME et startups.',
   },
   {
     id: '4',

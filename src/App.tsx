@@ -30,14 +30,14 @@ function AppContent() {
             key="loader"
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] bg-main flex items-center justify-center"
+            className="fixed inset-0 z-100 bg-main flex items-center justify-center"
           >
             <div className="flex flex-col items-center">
               <motion.div
                 initial={{ width: 0 }}
                 animate={{ width: 200 }}
                 transition={{ duration: 1.5, ease: "easeInOut" }}
-                className="h-[2px] bg-accent mb-4"
+                className="h-0.5 bg-accent mb-4"
               />
               <motion.div
                 initial={{ opacity: 0 }}
@@ -71,8 +71,8 @@ function AppContent() {
             <div className="fixed inset-0 -z-50 pointer-events-none">
               <div className="absolute inset-0 noise-bg opacity-[0.03]" />
               <div className="grid-bg" />
-              <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-accent/10 rounded-full blur-[150px] opacity-20" />
-              <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-[150px] opacity-10" />
+              <div className="absolute top-0 right-0 w-200 h-200 bg-accent/20 rounded-full blur-[150px] ambient-orb-a" />
+              <div className="absolute bottom-0 left-0 w-150 h-150 bg-blue-500/15 rounded-full blur-[150px] ambient-orb-b" />
             </div>
           </motion.div>
         )}

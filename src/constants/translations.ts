@@ -22,7 +22,7 @@ export const translations = {
       metrics: {
         senior: 'Full Stack',
         expertise: 'Spécialité',
-        years: '4+ Ans',
+        years: '3 Ans',
         experience: 'Expérience',
         projects: '07+',
         projectsLabel: 'Projets réalisés',
@@ -38,7 +38,7 @@ export const translations = {
       location: 'Antananarivo, Madagascar',
       intro: "Développeur Web Full Stack, je conçois des <span class=\"text-accent italic\">applications web et mobiles</span> claires, <span class=\"text-white font-bold\">performantes et orientées utilisateur.</span>",
       p1: "Formé à l'EMIT (Master II & Licence en Informatique), je maîtrise React, Next.js, React Native et Node.js pour livrer des produits de bout en bout.",
-      p2: "J'ai travaillé avec Relia Consulting, Odace France et des institutions locales — du mobile au WordPress, en passant par des outils métiers sur mesure.",
+      p2: "J'ai travaillé avec Relia Consulting, AZ+ et des institutions locales — en passant par des outils métiers sur mesure.",
       stats1: 'Expériences pro',
       stats2: 'Diplômes',
     },
@@ -122,25 +122,11 @@ export const translations = {
           description: 'Développement frontend React/TypeScript pour candidats et recruteurs, intégration API Laravel, réservation de créneaux d\'entretien, paiements en ligne et messagerie temps réel.',
         },
         {
-          id: '1',
-          role: 'Développeur Frontend Mobile — Planity',
-          company: 'Relia Consulting',
-          period: '2025',
-          description: 'Développement interface mobile React Native et TypeScript, composants réutilisables, chat/notifications push et optimisation des performances.',
-        },
-        {
           id: '2',
           role: 'Développeur Frontend — Business Plan Generator',
           company: 'Relia Consulting',
           period: '2025',
           description: 'Interface Next.js/TypeScript, formulaire multi-étapes React Hook Form/Zod, export PDF jsPDF et intégration API Axios.',
-        },
-        {
-          id: '3',
-          role: 'Développeur WordPress',
-          company: 'Odace France',
-          period: '2023 — 2024',
-          description: 'Développement de sites WordPress, extensions personnalisées, optimisation SEO et déploiement WooCommerce pour PME et startups.',
         },
         {
           id: '4',

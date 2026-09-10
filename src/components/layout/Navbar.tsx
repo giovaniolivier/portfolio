@@ -41,7 +41,7 @@ export function Navbar() {
         >
           <motion.a
             href="#"
-            className="flex items-center justify-center w-8 h-8 rounded-full bg-white text-black font-black text-sm"
+            className="brand-mark"
             whileHover={{ scale: 1.05 }}
           >
             {profile.name.initial}
@@ -80,9 +80,7 @@ export function Navbar() {
             href="#contact"
             whileHover={{ scale: 1.02 }}
             className={`px-4 py-1.5 rounded-full font-bold text-[10px] uppercase tracking-widest transition-all duration-500 ${
-              scrolled
-                ? 'bg-white text-black'
-                : 'bg-white/5 border border-white/10 text-white'
+              scrolled ? 'btn-primary py-1.5! px-4!' : 'bg-white/5 border border-white/10 text-white'
             }`}
           >
             {t.nav.cta}
@@ -103,7 +101,7 @@ export function Navbar() {
             initial={{ opacity: 0, backdropFilter: 'blur(0px)' }}
             animate={{ opacity: 1, backdropFilter: 'blur(20px)' }}
             exit={{ opacity: 0, backdropFilter: 'blur(0px)' }}
-            className="fixed inset-0 z-40 bg-black/60 md:hidden"
+            className="fixed inset-0 z-40 theme-overlay md:hidden"
             onClick={() => setIsOpen(false)}
           >
             <motion.div

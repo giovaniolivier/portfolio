@@ -22,11 +22,11 @@ export function AppProvider({ children }: { children: ReactNode }) {
     const savedLang = localStorage.getItem('lang') as Language;
     if (savedLang) setLanguage(savedLang);
 
-    const savedTheme = localStorage.getItem('theme') as Theme;
-    if (savedTheme) {
-      setTheme(savedTheme);
-      document.documentElement.classList.toggle('light', savedTheme === 'light');
-    }
+    const savedTheme = localStorage.getItem('theme') as Theme | null;
+    const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+    const initial: Theme = savedTheme ?? (prefersLight ? 'light' : 'dark');
+    setTheme(initial);
+    document.documentElement.classList.toggle('light', initial === 'light');
   }, []);
 
   const handleSetLanguage = (lang: Language) => {

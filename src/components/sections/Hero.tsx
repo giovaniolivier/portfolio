@@ -18,7 +18,7 @@ export function Hero() {
       className="min-h-screen relative flex items-center justify-center pt-16 overflow-hidden bg-main"
     >
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-screen aspect-square bg-[radial-gradient(circle_at_center,rgba(139,92,246,0.15)_0%,transparent_50%)] blur-[100px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-screen aspect-square hero-glow blur-[100px]" />
       </div>
 
       <motion.div
