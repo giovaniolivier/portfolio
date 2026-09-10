@@ -50,6 +50,14 @@ export const PROJECTS: Project[] = [
     githubUrl: 'https://github.com/giovaniolivier/AZ-BO',
     liveUrl: 'https://az-bo.vercel.app',
   },
+  {
+    id: '8',
+    title: 'AZ Driver (mobile-driver)',
+    description: 'Application mobile Android (APK) pour les livreurs AZ+ — courses, livraisons express, géolocalisation, notifications, caisse et suivi des commandes en temps réel.',
+    outcome: 'App React Native déployée en APK : Socket.io, Notifee, géolocalisation en arrière-plan, parcours livreur (accueil, en cours, livré, revenus).',
+    technologies: ['React Native', 'TypeScript', 'Socket.io', 'Axios', 'Notifee'],
+    imageUrl: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=2426&auto=format&fit=crop',
+  },
 ];
 
 export const SKILLS: Skill[] = [
@@ -59,6 +67,7 @@ export const SKILLS: Skill[] = [
   { name: 'React.js', category: 'Frontend' },
   { name: 'React Native', category: 'Frontend' },
   { name: 'Next.js', category: 'Frontend' },
+  { name: 'Tailwind CSS', category: 'Frontend' },
   { name: 'Vue.js', category: 'Frontend' },
   { name: 'Express', category: 'Backend' },
   { name: 'Node.js', category: 'Backend' },
@@ -73,18 +82,28 @@ export const SKILLS: Skill[] = [
 
 export const EXPERIENCES: Experience[] = [
   {
+    id: '8',
+    role: 'Développeur Mobile — AZ Driver',
+    company: 'AZ+',
+    period: '2026',
+    description: 'Développement de l\'application Android (APK) pour les livreurs AZ+ : courses et livraisons express, géolocalisation, notifications push, caisse et synchronisation temps réel des commandes.',
+    technologies: ['React Native', 'TypeScript', 'Socket.io', 'Axios', 'Notifee'],
+  },
+  {
     id: '7',
     role: 'Développeur Full Stack — AZLive',
     company: 'AZ+',
     period: '2026',
     description: 'Développement front React/TypeScript et API Django pour une plateforme de live shopping : capture automatique des « JP », gestion produits/commandes, intégrations TikTok/Facebook et diffusion vidéo en direct.',
+    technologies: ['React', 'TypeScript', 'Django', 'Gemini AI', 'Tailwind CSS'],
   },
   {
     id: '6',
-    role: 'Développeur Full Stack — JobPrive',
+    role: 'Développeur Frontend — JobPrive',
     company: 'Relia Consulting',
     period: '2026',
     description: 'Développement frontend React/TypeScript pour candidats et recruteurs, intégration API Laravel, réservation de créneaux d\'entretien, paiements en ligne et messagerie temps réel.',
+    technologies: ['React', 'TypeScript', 'Laravel', 'Stripe', 'Socket.io'],
   },
   {
     id: '2',
@@ -92,19 +111,22 @@ export const EXPERIENCES: Experience[] = [
     company: 'Relia Consulting',
     period: '2025',
     description: 'Interface Next.js/TypeScript, formulaire multi-étapes React Hook Form/Zod, export PDF jsPDF et intégration API Axios.',
+    technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'React Hook Form', 'Zod'],
   },
   {
     id: '4',
-    role: 'Conception Simulateur Prélèvement à la Source',
+    role: 'Stage — Conception Simulateur Prélèvement à la Source',
     company: 'Direction Régionale des Impôts',
     period: '2022',
     description: 'Développement d\'algorithmes de calcul fiscal, interface utilisateur React.js et formation du personnel pour la digitalisation des services fiscaux.',
+    technologies: ['React.js', 'JavaScript', 'HTML5 / CSS3'],
   },
   {
     id: '5',
-    role: 'Procédure Débogage Crédit SI',
+    role: 'Stage — Procédure Débogage Crédit SI',
     company: 'SMMEC',
     period: '2021',
     description: 'Analyse du système d\'information, outils de débogage/validation automatisés et correction d\'anomalies du système de gestion de crédits.',
+    technologies: ['SQL', 'JavaScript', 'Git'],
   },
 ];

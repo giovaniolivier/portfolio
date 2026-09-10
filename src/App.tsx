@@ -9,16 +9,26 @@ import { Projects } from './components/sections/Projects';
 import { Experience } from './components/sections/Experience';
 import { Contact } from './components/sections/Contact';
 import { AppProvider, useApp } from './context/AppContext';
+import { CVPage } from './pages/CVPage';
 
-function AppContent() {
+function usePathname() {
+  const [pathname, setPathname] = useState(() => window.location.pathname);
+
+  useEffect(() => {
+    const sync = () => setPathname(window.location.pathname);
+    window.addEventListener('popstate', sync);
+    return () => window.removeEventListener('popstate', sync);
+  }, []);
+
+  return pathname;
+}
+
+function Portfolio() {
   const [loading, setLoading] = useState(true);
   const { t } = useApp();
 
   useEffect(() => {
-    // Simulate loading
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 2000);
+    const timer = setTimeout(() => setLoading(false), 2000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -36,7 +46,7 @@ function AppContent() {
               <motion.div
                 initial={{ width: 0 }}
                 animate={{ width: 200 }}
-                transition={{ duration: 1.5, ease: "easeInOut" }}
+                transition={{ duration: 1.5, ease: 'easeInOut' }}
                 className="h-0.5 bg-accent mb-4"
               />
               <motion.div
@@ -66,8 +76,7 @@ function AppContent() {
               <Contact />
             </main>
             <Footer />
-            
-            {/* Background elements */}
+
             <div className="fixed inset-0 -z-50 pointer-events-none">
               <div className="absolute inset-0 noise-bg opacity-[0.03]" />
               <div className="grid-bg" />
@@ -79,6 +88,14 @@ function AppContent() {
       </AnimatePresence>
     </div>
   );
+}
+
+function AppContent() {
+  const pathname = usePathname();
+  const isCv = pathname === '/cv' || pathname.endsWith('/cv');
+
+  if (isCv) return <CVPage />;
+  return <Portfolio />;
 }
 
 export default function App() {

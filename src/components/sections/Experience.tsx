@@ -2,14 +2,22 @@ import { SectionWrapper } from '../ui/SectionWrapper';
 import { EXPERIENCES } from '../../constants/data';
 import { motion } from 'motion/react';
 import { useApp } from '../../context/AppContext';
+import type { Experience as ExperienceItem } from '../../types';
 
 export function Experience() {
   const { t } = useApp();
 
-  const experiences = EXPERIENCES.map((e) => ({
-    ...e,
-    ...t.experience.items.find((item: { id: string }) => item.id === e.id),
-  }));
+  const experiences: ExperienceItem[] = EXPERIENCES.map((e) => {
+    const localized = t.experience.items.find((item: { id: string }) => item.id === e.id);
+    return {
+      id: e.id,
+      role: localized?.role ?? e.role,
+      company: localized?.company ?? e.company,
+      period: localized?.period ?? e.period,
+      description: localized?.description ?? e.description,
+      technologies: e.technologies,
+    };
+  });
 
   return (
     <SectionWrapper id="experience">
@@ -65,6 +73,19 @@ export function Experience() {
                 <p className="text-gray-500 font-light leading-relaxed text-sm max-w-md">
                   {exp.description}
                 </p>
+
+                {exp.technologies.length > 0 && (
+                  <div className="flex flex-wrap gap-1.5 mt-3 max-w-md">
+                    {exp.technologies.map((tech: string) => (
+                      <span
+                        key={tech}
+                        className="px-2 py-0.5 text-[8px] uppercase tracking-widest font-black bg-white/3 text-white/40 border border-white/5 rounded"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                )}
 
                 <div className="mt-10 h-px w-full bg-white/5" />
               </motion.div>

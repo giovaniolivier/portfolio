@@ -291,3 +291,236 @@ html.light .noise-bg {
 .reveal-text {
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 }
+
+/* —— CV page —— */
+.cv-page {
+  min-height: 100vh;
+  background: #e8eaef;
+  color: #111827;
+  padding: 1.25rem 1rem 3rem;
+}
+
+.cv-toolbar {
+  max-width: 210mm;
+  margin: 0 auto 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.cv-toolbar-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid rgba(17, 24, 39, 0.12);
+  background: #fff;
+  color: #111827;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.cv-toolbar-btn:hover {
+  background: #f3f4f6;
+  border-color: rgba(17, 24, 39, 0.22);
+}
+
+.cv-toolbar-btn-primary {
+  background: #111827;
+  color: #fff;
+  border-color: #111827;
+}
+
+.cv-toolbar-btn-primary:hover {
+  background: #1f2937;
+}
+
+.cv-sheet {
+  max-width: 210mm;
+  margin: 0 auto;
+  background: #fff;
+  color: #111827;
+  padding: 14mm 16mm;
+  box-shadow: 0 12px 40px rgba(17, 24, 39, 0.1);
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+  font-size: 10.5pt;
+  line-height: 1.45;
+}
+
+.cv-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 2px solid #6d28d9;
+  margin-bottom: 1rem;
+}
+
+.cv-name {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.55rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: #111827;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.cv-role {
+  margin: 0.25rem 0 0;
+  color: #6d28d9;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.cv-contacts {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: right;
+  font-size: 0.78rem;
+  color: #4b5563;
+  line-height: 1.55;
+}
+
+.cv-contacts a {
+  color: #111827;
+  text-decoration: none;
+}
+
+.cv-contacts a:hover {
+  color: #6d28d9;
+}
+
+.cv-section {
+  margin-bottom: 0.9rem;
+}
+
+.cv-section-title {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #6d28d9;
+  margin: 0 0 0.4rem;
+  padding-bottom: 0.2rem;
+  border-bottom: 1px solid rgba(109, 40, 217, 0.25);
+}
+
+.cv-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.cv-item-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  align-items: baseline;
+}
+
+.cv-item-title {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+  line-height: 1.25;
+}
+
+.cv-item-meta {
+  margin: 0.1rem 0 0;
+  font-size: 0.8rem;
+  color: #4b5563;
+  font-style: italic;
+}
+
+.cv-item-period {
+  flex-shrink: 0;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.7rem;
+  color: #6b7280;
+  white-space: nowrap;
+}
+
+.cv-text {
+  margin: 0.2rem 0 0;
+  color: #374151;
+  font-size: 0.82rem;
+  font-weight: 300;
+}
+
+.cv-tech {
+  margin: 0.15rem 0 0;
+  font-size: 0.72rem;
+  color: #6d28d9;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+}
+
+.cv-skills {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.cv-skill-label {
+  font-weight: 600;
+  color: #111827;
+}
+
+@media (max-width: 720px) {
+  .cv-header {
+    flex-direction: column;
+  }
+
+  .cv-contacts {
+    text-align: left;
+  }
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 10mm;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+  }
+
+  .cv-page {
+    background: #fff;
+    padding: 0;
+    min-height: auto;
+  }
+
+  .cv-sheet {
+    max-width: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+
+  .cv-toolbar,
+  .print\:hidden {
+    display: none !important;
+  }
+
+  a {
+    color: inherit !important;
+    text-decoration: none !important;
+  }
+}
+

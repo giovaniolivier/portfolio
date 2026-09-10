@@ -24,7 +24,7 @@ export const translations = {
         expertise: 'Spécialité',
         years: '3 Ans',
         experience: 'Expérience',
-        projects: '07+',
+        projects: '08+',
         projectsLabel: 'Projets réalisés',
         available: 'Disponible',
         availability: 'Disponibilité',
@@ -98,6 +98,12 @@ export const translations = {
           description: 'Back-office full-stack de gestion et suivi des livraisons quotidiennes pour ZEN — tableau de bord, partenaires, livreurs et rôles admin/livreur.',
           outcome: 'Projet personnel réalisé pour AZ+ : React 19, Express, SQLite, stats du jour et suivi des livraisons (en attente / livré / annulé).',
         },
+        {
+          id: '8',
+          title: 'AZ Driver (mobile-driver)',
+          description: 'Application mobile Android (APK) pour les livreurs AZ+ — courses, livraisons express, géolocalisation, notifications, caisse et suivi des commandes en temps réel.',
+          outcome: 'App React Native déployée en APK : Socket.io, Notifee, géolocalisation en arrière-plan, parcours livreur (accueil, en cours, livré, revenus).',
+        },
       ]
     },
     experience: {
@@ -108,6 +114,13 @@ export const translations = {
       focusDesc: 'Master II en Informatique — EMIT, Université de Fianarantsoa (2023-2024). Licence en Informatique — EMIT (2021-2022).',
       items: [
         {
+          id: '8',
+          role: 'Développeur Mobile — AZ Driver',
+          company: 'AZ+',
+          period: '2026',
+          description: 'Développement de l\'application Android (APK) pour les livreurs AZ+ : courses et livraisons express, géolocalisation, notifications push, caisse et synchronisation temps réel des commandes.',
+        },
+        {
           id: '7',
           role: 'Développeur Full Stack — AZLive',
           company: 'AZ+',
@@ -116,7 +129,7 @@ export const translations = {
         },
         {
           id: '6',
-          role: 'Développeur Full Stack — JobPrive',
+          role: 'Développeur Frontend — JobPrive',
           company: 'Relia Consulting',
           period: '2026',
           description: 'Développement frontend React/TypeScript pour candidats et recruteurs, intégration API Laravel, réservation de créneaux d\'entretien, paiements en ligne et messagerie temps réel.',
@@ -130,14 +143,14 @@ export const translations = {
         },
         {
           id: '4',
-          role: 'Conception Simulateur Prélèvement à la Source',
+          role: 'Stage — Conception Simulateur Prélèvement à la Source',
           company: 'Direction Régionale des Impôts',
           period: '2022',
           description: 'Développement d\'algorithmes de calcul fiscal, interface utilisateur React.js et formation du personnel pour la digitalisation des services fiscaux.',
         },
         {
           id: '5',
-          role: 'Procédure Débogage Crédit SI',
+          role: 'Stage — Procédure Débogage Crédit SI',
           company: 'SMMEC',
           period: '2021',
           description: 'Analyse du système d\'information, outils de débogage/validation automatisés et correction d\'anomalies du système de gestion de crédits.',
@@ -169,6 +182,17 @@ export const translations = {
       rights: 'Tous droits réservés.',
     },
     loader: 'Initialisation de l\'expérience',
+    cv: {
+      back: 'Retour au portfolio',
+      print: 'Imprimer / PDF',
+      summaryTitle: 'Profil',
+      experienceTitle: 'Expérience',
+      projectsTitle: 'Projets personnels',
+      skillsTitle: 'Compétences',
+      educationTitle: 'Formation',
+      summary:
+        'Développeur Web Full Stack basé à Antananarivo. Je conçois des applications web et mobiles claires, performantes et orientées utilisateur avec React, Next.js, React Native et Node.js.',
+    },
   },
   en: {
     nav: {
@@ -192,7 +216,7 @@ export const translations = {
         expertise: 'Specialty',
         years: '4+ Yrs',
         experience: 'Experience',
-        projects: '07+',
+        projects: '08+',
         projectsLabel: 'Projects built',
         available: 'Available',
         availability: 'Availability',
@@ -266,6 +290,12 @@ export const translations = {
           description: 'Full-stack back-office for managing and tracking ZEN’s daily deliveries — dashboard, partners, drivers, and admin/driver roles.',
           outcome: 'Personal project built for AZ+: React 19, Express, SQLite, daily stats, and delivery tracking (pending / delivered / cancelled).',
         },
+        {
+          id: '8',
+          title: 'AZ Driver (mobile-driver)',
+          description: 'Android mobile app (APK) for AZ+ delivery drivers — routes, express deliveries, geolocation, notifications, cash register, and real-time order tracking.',
+          outcome: 'React Native APK: Socket.io, Notifee, background geolocation, and driver flows (home, in progress, delivered, earnings).',
+        },
       ]
     },
     experience: {
@@ -276,6 +306,13 @@ export const translations = {
       focusDesc: "Master's II in Computer Science — EMIT, University of Fianarantsoa (2023-2024). Bachelor's in Computer Science — EMIT (2021-2022).",
       items: [
         {
+          id: '8',
+          role: 'Mobile Developer — AZ Driver',
+          company: 'AZ+',
+          period: '2026',
+          description: 'Built the Android APK for AZ+ delivery drivers: routes and express deliveries, geolocation, push notifications, cash register, and real-time order sync.',
+        },
+        {
           id: '7',
           role: 'Full Stack Developer — AZLive',
           company: 'AZ+',
@@ -284,17 +321,10 @@ export const translations = {
         },
         {
           id: '6',
-          role: 'Full Stack Developer — JobPrive',
+          role: 'Frontend Developer — JobPrive',
           company: 'Relia Consulting',
           period: '2026',
           description: 'React/TypeScript frontend for candidates and recruiters, Laravel API integration, interview slot booking, online payments, and real-time messaging.',
-        },
-        {
-          id: '1',
-          role: 'Mobile Frontend Developer — Planity',
-          company: 'Relia Consulting',
-          period: '2025',
-          description: 'React Native and TypeScript mobile UI, reusable components, chat/push notifications, and performance optimization.',
         },
         {
           id: '2',
@@ -304,22 +334,15 @@ export const translations = {
           description: 'Next.js/TypeScript interface, multi-step React Hook Form/Zod form, jsPDF export, and Axios API integration.',
         },
         {
-          id: '3',
-          role: 'WordPress Developer',
-          company: 'Odace France',
-          period: '2023 — 2024',
-          description: 'WordPress sites, custom plugins, SEO optimization, and WooCommerce deployment for SMEs and startups.',
-        },
-        {
           id: '4',
-          role: 'Withholding Tax Simulator',
+          role: 'Internship — Withholding Tax Simulator',
           company: 'Regional Tax Directorate',
           period: '2022',
           description: 'Tax calculation algorithms, React.js user interface, and staff training for digital tax services.',
         },
         {
           id: '5',
-          role: 'Credit System Debugging Procedure',
+          role: 'Internship — Credit System Debugging Procedure',
           company: 'SMMEC',
           period: '2021',
           description: 'Information system analysis, automated debugging/validation tools, and microfinance credit system fixes.',
@@ -351,5 +374,16 @@ export const translations = {
       rights: 'All rights reserved.',
     },
     loader: 'Initializing experience',
+    cv: {
+      back: 'Back to portfolio',
+      print: 'Print / PDF',
+      summaryTitle: 'Profile',
+      experienceTitle: 'Experience',
+      projectsTitle: 'Personal projects',
+      skillsTitle: 'Skills',
+      educationTitle: 'Education',
+      summary:
+        'Full Stack Web Developer based in Antananarivo. I build clear, performant, user-focused web and mobile applications with React, Next.js, React Native, and Node.js.',
+    },
   }
 };

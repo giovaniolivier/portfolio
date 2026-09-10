@@ -21,12 +21,12 @@ export const profile = {
   links: {
     github: 'https://github.com/giovaniolivier',
     linkedin: 'https://www.linkedin.com/in/lovasoa-heriniaina-olivier-8bb193317',
-    cv: '#',
+    cv: '/cv',
   },
   stats: {
     experiences: '02',
     degrees: '02',
-    projects: '07+',
+    projects: '08+',
     years: '4+',
   },
 } as const;
