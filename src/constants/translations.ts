@@ -96,24 +96,6 @@ export const translations = {
           description: 'Plateforme de recrutement premium reliant recruteurs et candidats via des entretiens en format « vente privée » — créneaux limités, réservation et paiement en ligne.',
           outcome: 'Architecture 3 modules (frontend React, API Laravel, backoffice admin), paiements Stripe/MangoPay, messagerie Socket.io et multilingue FR/EN.',
         },
-        {
-          id: '5',
-          title: 'AZLive',
-          description: 'Plateforme de live shopping pour vendeurs TikTok et Facebook à Madagascar — capture automatique des commentaires « JP » et création instantanée de commandes structurées.',
-          outcome: 'Front React/Vite, API Django, intégrations Facebook/TikTok, MediaMTX (WHIP), Cloudinary et Gemini AI pour l\'analyse des commentaires.',
-        },
-        {
-          id: '6',
-          title: 'ZEN (AZ-BO)',
-          description: 'Back-office full-stack de gestion et suivi des livraisons quotidiennes pour ZEN — tableau de bord, partenaires, livreurs et rôles admin/livreur.',
-          outcome: 'Projet personnel réalisé pour AZ+ : React 19, Express, SQLite, stats du jour et suivi des livraisons (en attente / livré / annulé).',
-        },
-        {
-          id: '8',
-          title: 'AZ Driver (mobile-driver)',
-          description: 'Application mobile Android (APK) pour les livreurs AZ+ — courses, livraisons express, géolocalisation, notifications, caisse et suivi des commandes en temps réel.',
-          outcome: 'App React Native déployée en APK : Socket.io, Notifee, géolocalisation en arrière-plan, parcours livreur (accueil, en cours, livré, revenus).',
-        },
       ]
     },
     experience: {
@@ -196,7 +178,7 @@ export const translations = {
       back: 'Retour au portfolio',
       print: 'Imprimer / PDF',
       summaryTitle: 'Profil',
-      experienceTitle: 'Expérience',
+      experienceTitle: 'Expériences Professionnelles',
       projectsTitle: 'Projets personnels',
       skillsTitle: 'Compétences',
       educationTitle: 'Formation',
@@ -298,24 +280,6 @@ export const translations = {
           description: 'Premium recruitment platform connecting recruiters and candidates through private-sale-style interview slots — limited availability, booking, and online payment.',
           outcome: '3-module architecture (React frontend, Laravel API, admin backoffice), Stripe/MangoPay payments, Socket.io messaging, and FR/EN i18n.',
         },
-        {
-          id: '5',
-          title: 'AZLive',
-          description: 'Live shopping platform for TikTok and Facebook sellers in Madagascar — automatic capture of “JP” comments and instant creation of structured orders.',
-          outcome: 'React/Vite frontend, Django API, Facebook/TikTok integrations, MediaMTX (WHIP), Cloudinary, and Gemini AI for comment analysis.',
-        },
-        {
-          id: '6',
-          title: 'ZEN (AZ-BO)',
-          description: 'Full-stack back-office for managing and tracking ZEN’s daily deliveries — dashboard, partners, drivers, and admin/driver roles.',
-          outcome: 'Personal project built for AZ+: React 19, Express, SQLite, daily stats, and delivery tracking (pending / delivered / cancelled).',
-        },
-        {
-          id: '8',
-          title: 'AZ Driver (mobile-driver)',
-          description: 'Android mobile app (APK) for AZ+ delivery drivers — routes, express deliveries, geolocation, notifications, cash register, and real-time order tracking.',
-          outcome: 'React Native APK: Socket.io, Notifee, background geolocation, and driver flows (home, in progress, delivered, earnings).',
-        },
       ]
     },
     experience: {
@@ -398,7 +362,7 @@ export const translations = {
       back: 'Back to portfolio',
       print: 'Print / PDF',
       summaryTitle: 'Profile',
-      experienceTitle: 'Experience',
+      experienceTitle: 'Professional Experience',
       projectsTitle: 'Personal projects',
       skillsTitle: 'Skills',
       educationTitle: 'Education',

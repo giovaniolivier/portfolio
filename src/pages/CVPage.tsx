@@ -5,7 +5,7 @@ import { EXPERIENCES, PROJECTS, SKILLS } from '../constants/data';
 import type { Experience as ExperienceItem } from '../types';
 
 /** Projets perso (hors expériences pro déjà listées) */
-const CV_PERSONAL_PROJECT_IDS = ['1', '6'] as const;
+const CV_PERSONAL_PROJECT_IDS = ['1', '9'] as const;
 
 function goHome() {
   window.history.pushState({}, '', '/');
@@ -16,7 +16,9 @@ export function CVPage() {
   const { t, language, setLanguage } = useApp();
   const role = profile.role[language];
 
-  const experiences: ExperienceItem[] = EXPERIENCES.map((e) => {
+  const experiences: ExperienceItem[] = EXPERIENCES.filter(
+    (e) => !/^Stage\b/i.test(e.role) && !/^Internship\b/i.test(e.role),
+  ).map((e) => {
     const localized = t.experience.items.find((item: { id: string }) => item.id === e.id);
     return {
       id: e.id,

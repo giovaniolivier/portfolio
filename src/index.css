@@ -501,7 +501,7 @@ html.light .noise-bg {
   color: #111827;
 }
 
-@media (max-width: 720px) {
+@media screen and (max-width: 720px) {
   .cv-header {
     flex-direction: column;
   }
@@ -514,7 +514,7 @@ html.light .noise-bg {
 @media print {
   @page {
     size: A4;
-    margin: 10mm;
+    margin: 12mm;
   }
 
   html,
@@ -534,6 +534,18 @@ html.light .noise-bg {
     margin: 0;
     padding: 0;
     box-shadow: none;
+  }
+
+  .cv-header {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    gap: 1.5rem !important;
+  }
+
+  .cv-contacts {
+    text-align: right !important;
   }
 
   .cv-toolbar,

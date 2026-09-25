@@ -41,35 +41,6 @@ export const PROJECTS: Project[] = [
     imageUrl: 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=2426&auto=format&fit=crop',
     liveUrl: 'https://dev.jobprive.fr/recruiter',
   },
-  {
-    id: '5',
-    title: 'AZLive',
-    description: 'Plateforme de live shopping pour vendeurs TikTok et Facebook à Madagascar — capture automatique des commentaires « JP » et création instantanée de commandes structurées.',
-    outcome: 'Front React/Vite, API Django, intégrations Facebook/TikTok, MediaMTX (WHIP), Cloudinary et Gemini AI pour l\'analyse des commentaires.',
-    technologies: ['React', 'TypeScript', 'Django', 'Gemini AI'],
-    imageUrl: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=2426&auto=format&fit=crop',
-    githubUrl: 'https://github.com/Ando-Andria/AZLive-Front',
-    githubBackendUrl: 'https://github.com/Mirahasina/AZLive',
-    liveUrl: 'https://azlivefront.up.railway.app/',
-  },
-  {
-    id: '6',
-    title: 'ZEN (AZ-BO)',
-    description: 'Back-office full-stack de gestion et suivi des livraisons quotidiennes pour ZEN — tableau de bord, partenaires, livreurs et rôles admin/livreur.',
-    outcome: 'Projet personnel réalisé pour AZ+ : React 19, Express, SQLite, stats du jour et suivi des livraisons (en attente / livré / annulé).',
-    technologies: ['React', 'Express', 'Tailwind CSS', 'SQLite'],
-    imageUrl: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2426&auto=format&fit=crop',
-    githubUrl: 'https://github.com/giovaniolivier/AZ-BO',
-    liveUrl: 'https://az-bo.vercel.app',
-  },
-  {
-    id: '8',
-    title: 'AZ Driver (mobile-driver)',
-    description: 'Application mobile Android (APK) pour les livreurs AZ+ — courses, livraisons express, géolocalisation, notifications, caisse et suivi des commandes en temps réel.',
-    outcome: 'App React Native déployée en APK : Socket.io, Notifee, géolocalisation en arrière-plan, parcours livreur (accueil, en cours, livré, revenus).',
-    technologies: ['React Native', 'TypeScript', 'Socket.io', 'Axios', 'Notifee'],
-    imageUrl: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=2426&auto=format&fit=crop',
-  },
 ];
 
 export const SKILLS: Skill[] = [
@@ -83,6 +54,7 @@ export const SKILLS: Skill[] = [
   { name: 'Vue.js', category: 'Frontend' },
   { name: 'Express', category: 'Backend' },
   { name: 'Node.js', category: 'Backend' },
+  { name: 'Prisma', category: 'Backend' },
   { name: 'SQL', category: 'Backend' },
   { name: 'MySQL', category: 'Database' },
   { name: 'MongoDB', category: 'Database' },
