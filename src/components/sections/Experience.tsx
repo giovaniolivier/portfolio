@@ -20,7 +20,7 @@ export function Experience() {
   });
 
   return (
-    <SectionWrapper id="experience">
+    <SectionWrapper id="experience" className="!pt-24 md:!pt-32">
       <div className="flex flex-col md:flex-row gap-12">
         <div className="md:w-[38%] sticky top-24 h-fit">
           <span className="section-label">{t.experience.label}</span>

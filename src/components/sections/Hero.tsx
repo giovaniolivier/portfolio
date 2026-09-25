@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from 'motion/react';
-import { ArrowRight, Download } from 'lucide-react';
+import { ArrowRight, Mail } from 'lucide-react';
 import { useRef } from 'react';
 import { useApp } from '../../context/AppContext';
 import { profile } from '../../constants/profile';
@@ -34,11 +34,11 @@ export function Hero() {
 
           <h1 className="text-4xl md:text-6xl font-bold leading-[0.9] tracking-tighter text-white mb-6 text-gradient uppercase">
             {t.hero.title1} <br />
-            <span className="italic font-light text-white/40">{t.hero.title2}</span> <br />
+            <span className="italic font-light text-white/55">{t.hero.title2}</span> <br />
             {t.hero.title3}
           </h1>
 
-          <p className="text-sm md:text-base text-gray-400 max-w-lg mx-auto mb-8 leading-relaxed font-light">
+          <p className="text-sm md:text-base text-gray-300 max-w-lg mx-auto mb-8 leading-relaxed font-light">
             {t.hero.description}
           </p>
 
@@ -47,42 +47,49 @@ export function Hero() {
               {t.hero.ctaProjects}
               <ArrowRight size={14} />
             </motion.a>
-            <motion.a href={profile.links.cv} className="btn-secondary flex items-center gap-2">
-              <Download size={14} />
-              {t.hero.ctaResume}
+            <motion.a href="#contact" className="btn-secondary flex items-center gap-2">
+              <Mail size={14} />
+              {t.hero.ctaContact}
             </motion.a>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 py-5 border-y border-white/5 opacity-60 hover:opacity-100 transition-opacity">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 py-5 border-y border-white/10">
             <div className="text-center">
               <div className="text-base font-display font-bold text-white mb-0.5">{t.hero.metrics.senior}</div>
-              <div className="text-[8px] uppercase tracking-widest font-mono text-gray-500">{t.hero.metrics.expertise}</div>
+              <div className="text-[8px] uppercase tracking-widest font-mono text-gray-400">{t.hero.metrics.expertise}</div>
             </div>
             <div className="text-center">
               <div className="text-base font-display font-bold text-white mb-0.5">{t.hero.metrics.years}</div>
-              <div className="text-[8px] uppercase tracking-widest font-mono text-gray-500">{t.hero.metrics.experience}</div>
+              <div className="text-[8px] uppercase tracking-widest font-mono text-gray-400">{t.hero.metrics.experience}</div>
             </div>
             <div className="text-center">
               <div className="text-base font-display font-bold text-white mb-0.5">{t.hero.metrics.projects}</div>
-              <div className="text-[8px] uppercase tracking-widest font-mono text-gray-500">{t.hero.metrics.projectsLabel}</div>
+              <div className="text-[8px] uppercase tracking-widest font-mono text-gray-400">{t.hero.metrics.projectsLabel}</div>
             </div>
             <div className="text-center">
               <div className="text-base font-display font-bold text-white mb-0.5">{t.hero.metrics.available}</div>
-              <div className="text-[8px] uppercase tracking-widest font-mono text-gray-500">{t.hero.metrics.availability}</div>
+              <div className="text-[8px] uppercase tracking-widest font-mono text-gray-400">{t.hero.metrics.availability}</div>
             </div>
           </div>
+
+          <a
+            href={profile.links.cv}
+            className="inline-block mt-6 text-[10px] uppercase tracking-widest text-white/45 hover:text-accent transition-colors"
+          >
+            {t.hero.ctaResume} →
+          </a>
         </motion.div>
       </motion.div>
 
       <div className="absolute bottom-8 left-8 hidden lg:block">
-        <div className="flex items-center gap-3 text-[9px] font-mono uppercase tracking-[0.3em] text-white/20">
-          <div className="w-6 h-px bg-white/20" />
+        <div className="flex items-center gap-3 text-[9px] font-mono uppercase tracking-[0.3em] text-white/35">
+          <div className="w-6 h-px bg-white/35" />
           {t.common.scroll}
         </div>
       </div>
 
       <div className="absolute bottom-8 right-8 hidden lg:block">
-        <div className="text-[9px] font-mono tracking-widest text-white/40">
+        <div className="text-[9px] font-mono tracking-widest text-white/45">
           [ {profile.location.coords} ]
         </div>
       </div>

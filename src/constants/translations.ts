@@ -16,8 +16,10 @@ export const translations = {
       title1: 'CONCEVOIR',
       title2: 'DEMAIN',
       title3: 'PAR LE CODE.',
-      description: 'Olivier — Développeur Web Full Stack basé à Antananarivo, passionné par la création d\'applications web et mobiles modernes.',
+      description:
+        'Développeur full-stack — j’imagine et je livre des apps web et mobiles (React, Node, API) jusqu’au déploiement.',
       ctaProjects: 'Découvrir mes projets',
+      ctaContact: 'Me contacter',
       ctaResume: 'Télécharger CV',
       metrics: {
         senior: 'Full Stack',
@@ -216,8 +218,10 @@ export const translations = {
       title1: 'DESIGNING',
       title2: 'TOMORROW',
       title3: 'THROUGH CODE.',
-      description: 'Olivier — Full Stack Web Developer based in Antananarivo, passionate about building modern web and mobile applications.',
+      description:
+        'Full-stack developer — I design and ship web & mobile apps (React, Node, APIs) through to deployment.',
       ctaProjects: 'Explore projects',
+      ctaContact: 'Contact me',
       ctaResume: 'Download CV',
       metrics: {
         senior: 'Full Stack',

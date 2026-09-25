@@ -8,7 +8,7 @@ import type { FormEvent } from 'react';
 export function Contact() {
   const { t } = useApp();
   return (
-    <SectionWrapper id="contact">
+    <SectionWrapper id="contact" className="!pt-24 md:!pt-32 !pb-28 md:!pb-36 border-t border-white/8">
       <div className="max-w-2xl mx-auto text-center mb-12">
         <span className="section-label">{t.contact.label}</span>
         <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-4 leading-none uppercase">
