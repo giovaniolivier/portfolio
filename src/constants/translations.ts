@@ -176,7 +176,7 @@ export const translations = {
     loader: 'Initialisation de l\'expérience',
     cv: {
       back: 'Retour au portfolio',
-      print: 'Imprimer / PDF',
+      print: 'Télécharger PDF',
       summaryTitle: 'Profil',
       experienceTitle: 'Expériences Professionnelles',
       projectsTitle: 'Projets personnels',
@@ -360,7 +360,7 @@ export const translations = {
     loader: 'Initializing experience',
     cv: {
       back: 'Back to portfolio',
-      print: 'Print / PDF',
+      print: 'Download PDF',
       summaryTitle: 'Profile',
       experienceTitle: 'Professional Experience',
       projectsTitle: 'Personal projects',

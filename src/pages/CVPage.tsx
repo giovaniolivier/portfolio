@@ -1,4 +1,4 @@
-import { ArrowLeft, Languages, Printer } from 'lucide-react';
+import { ArrowLeft, Languages, Download } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import { profile } from '../constants/profile';
 import { EXPERIENCES, PROJECTS, SKILLS } from '../constants/data';
@@ -10,6 +10,34 @@ const CV_PERSONAL_PROJECT_IDS = ['1', '9'] as const;
 function goHome() {
   window.history.pushState({}, '', '/');
   window.dispatchEvent(new PopStateEvent('popstate'));
+}
+
+function downloadCvPdf(language: 'fr' | 'en') {
+  const href = language === 'en' ? '/cv-en.pdf' : '/cv-fr.pdf';
+  const filename = language === 'en' ? 'CV-Olivier-Lovasoa-EN.pdf' : 'CV-Olivier-Lovasoa-FR.pdf';
+
+  void (async () => {
+    try {
+      const res = await fetch(href, { cache: 'no-store' });
+      if (!res.ok) throw new Error(`PDF unavailable (${res.status})`);
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = filename;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(url);
+    } catch (err) {
+      console.error(err);
+      window.alert(
+        language === 'en'
+          ? 'PDF not found. Run npm run generate:cv then retry.'
+          : 'PDF introuvable. Lancez npm run generate:cv puis réessayez.',
+      );
+    }
+  })();
 }
 
 export function CVPage() {
@@ -75,8 +103,12 @@ export function CVPage() {
             <Languages size={14} aria-hidden="true" />
             {language.toUpperCase()}
           </button>
-          <button type="button" onClick={() => window.print()} className="cv-toolbar-btn cv-toolbar-btn-primary">
-            <Printer size={14} aria-hidden="true" />
+          <button
+            type="button"
+            onClick={() => downloadCvPdf(language)}
+            className="cv-toolbar-btn cv-toolbar-btn-primary"
+          >
+            <Download size={14} aria-hidden="true" />
             {t.cv.print}
           </button>
         </div>
