@@ -43,7 +43,7 @@ html.light {
   --orb-a: 0.28;
   --orb-b: 0.16;
   --shadow-card: 0 12px 32px rgba(17, 24, 39, 0.08);
-  --input-placeholder: rgba(17, 24, 39, 0.35);
+  --input-placeholder: rgba(17, 24, 39, 0.5);
   --overlay: rgba(17, 24, 39, 0.35);
   --btn-primary-bg: #111827;
   --btn-primary-fg: #ffffff;
@@ -120,6 +120,14 @@ html.light {
     @apply bg-clip-text text-transparent transition-all duration-500;
   }
 
+  html.light .text-gradient {
+    background-image: linear-gradient(
+      180deg,
+      var(--page-fg) 20%,
+      color-mix(in srgb, var(--page-fg) 72%, transparent)
+    );
+  }
+
   .btn-primary {
     background: var(--btn-primary-bg);
     color: var(--btn-primary-fg);
@@ -146,6 +154,10 @@ html.light {
     border: 1px solid var(--border);
     color: var(--accent);
     @apply inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full text-[9px] uppercase font-bold tracking-[0.2em] mb-4;
+  }
+
+  html.light .section-label {
+    color: #5b21b6;
   }
 
   .loader-text {
@@ -216,18 +228,29 @@ html.light {
     color: var(--page-fg) !important;
   }
 
-  html.light .text-white\/5 { color: color-mix(in srgb, var(--page-fg) 12%, transparent) !important; }
-  html.light .text-white\/10 { color: color-mix(in srgb, var(--page-fg) 28%, transparent) !important; }
-  html.light .text-white\/20 { color: color-mix(in srgb, var(--page-fg) 40%, transparent) !important; }
-  html.light .text-white\/30 { color: color-mix(in srgb, var(--page-fg) 48%, transparent) !important; }
-  html.light .text-white\/40 { color: color-mix(in srgb, var(--page-fg) 55%, transparent) !important; }
-  html.light .text-white\/50 { color: color-mix(in srgb, var(--page-fg) 62%, transparent) !important; }
-  html.light .text-white\/60 { color: color-mix(in srgb, var(--page-fg) 70%, transparent) !important; }
+  /* Raised floors so muted white/* text stays WCAG-readable on lavender/white */
+  html.light .text-white\/5 { color: color-mix(in srgb, var(--page-fg) 35%, transparent) !important; }
+  html.light .text-white\/10 { color: color-mix(in srgb, var(--page-fg) 42%, transparent) !important; }
+  html.light .text-white\/15 { color: color-mix(in srgb, var(--page-fg) 50%, transparent) !important; }
+  html.light .text-white\/20 { color: color-mix(in srgb, var(--page-fg) 58%, transparent) !important; }
+  html.light .text-white\/30 { color: color-mix(in srgb, var(--page-fg) 68%, transparent) !important; }
+  html.light .text-white\/35 { color: color-mix(in srgb, var(--page-fg) 70%, transparent) !important; }
+  html.light .text-white\/40 { color: color-mix(in srgb, var(--page-fg) 72%, transparent) !important; }
+  html.light .text-white\/45 { color: color-mix(in srgb, var(--page-fg) 75%, transparent) !important; }
+  html.light .text-white\/50 { color: color-mix(in srgb, var(--page-fg) 78%, transparent) !important; }
+  html.light .text-white\/55 { color: color-mix(in srgb, var(--page-fg) 80%, transparent) !important; }
+  html.light .text-white\/60 { color: color-mix(in srgb, var(--page-fg) 82%, transparent) !important; }
+  html.light .text-white\/70 { color: color-mix(in srgb, var(--page-fg) 88%, transparent) !important; }
+  html.light .text-white\/75 { color: color-mix(in srgb, var(--page-fg) 90%, transparent) !important; }
 
   html.light .hover\:text-white:hover,
   html.light .group:hover .group-hover\:text-white,
   html.light .group\/item:hover .group-hover\/item\:text-white {
     color: var(--page-fg) !important;
+  }
+
+  html.light .group:hover .group-hover\:text-accent\/60 {
+    color: color-mix(in srgb, var(--accent) 85%, transparent) !important;
   }
 
   html.light .text-gray-300 {
@@ -239,7 +262,7 @@ html.light {
   }
 
   html.light .text-gray-500 {
-    color: #6b7280 !important;
+    color: #4b5563 !important;
   }
 
   html.light input,
