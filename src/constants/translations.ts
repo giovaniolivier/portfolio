@@ -63,6 +63,14 @@ export const translations = {
       viewMore: 'Voir plus sur GitHub',
       items: [
         {
+          id: '9',
+          title: 'JobRadar',
+          description:
+            'Assistant de veille et de tri d’offres : CV → analyse scorée → pipeline → lettre de motivation, avec auth, notifs email et PWA.',
+          outcome:
+            'Isolation multi-utilisateur, SMTP forcé en prod, IA multi-fournisseurs (Gemini/Groq/Claude), i18n FR/EN et déploiement Docker.',
+        },
+        {
           id: '1',
           title: 'TaskMaster',
           description: 'Application moderne de gestion de tâches avec priorités, catégorisation, filtrage avancé et calendrier intégré.',
@@ -254,6 +262,14 @@ export const translations = {
       impact: 'Highlights',
       viewMore: 'View more on GitHub',
       items: [
+        {
+          id: '9',
+          title: 'JobRadar',
+          description:
+            'Job-search assistant: CV → scored analysis → pipeline → cover letter, with auth, email alerts, and PWA.',
+          outcome:
+            'Per-user data isolation, SMTP required in production, multi-provider AI (Gemini/Groq/Claude), FR/EN i18n, and Docker deploy.',
+        },
         {
           id: '1',
           title: 'TaskMaster',

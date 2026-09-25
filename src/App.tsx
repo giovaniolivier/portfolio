@@ -81,7 +81,8 @@ function Portfolio() {
               <div className="absolute inset-0 noise-bg opacity-[0.03]" />
               <div className="grid-bg" />
               <div className="absolute top-0 right-0 w-200 h-200 bg-accent/20 rounded-full blur-[150px] ambient-orb-a" />
-              <div className="absolute bottom-0 left-0 w-150 h-150 bg-blue-500/15 rounded-full blur-[150px] ambient-orb-b" />
+              <div className="absolute top-[55%] left-0 w-150 h-150 bg-blue-500/12 rounded-full blur-[150px] ambient-orb-b" />
+              <div className="absolute bottom-0 right-1/4 w-120 h-120 bg-accent/10 rounded-full blur-[120px]" />
             </div>
           </motion.div>
         )}

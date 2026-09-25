@@ -11,7 +11,7 @@ export function Projects() {
   const projects = PROJECTS.map((p) => ({
     ...p,
     ...t.projects.items.find((item: { id: string }) => item.id === p.id),
-  }));
+  })).filter((p) => Boolean(p.title?.trim()) && Boolean(p.description?.trim()));
 
   return (
     <SectionWrapper id="projects" className="bg-white/2">
@@ -19,9 +19,9 @@ export function Projects() {
         <span className="section-label">{t.projects.label}</span>
         <h2 className="text-3xl md:text-5xl font-bold font-display text-white tracking-tight mb-3 uppercase">
           {t.projects.title1}{' '}
-          <span className="text-white/20 italic font-light">{t.projects.title2}</span>
+          <span className="text-white/45 italic font-light">{t.projects.title2}</span>
         </h2>
-        <p className="max-w-lg mx-auto text-gray-500 text-sm font-light">
+        <p className="max-w-lg mx-auto text-gray-300 text-sm font-light">
           {t.projects.description}
         </p>
       </div>

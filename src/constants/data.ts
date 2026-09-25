@@ -2,6 +2,18 @@ import { Project, Skill, Experience } from '../types';
 
 export const PROJECTS: Project[] = [
   {
+    id: '9',
+    title: 'JobRadar',
+    description:
+      'Assistant de veille et de tri d’offres : CV → analyse scorée → pipeline → lettre de motivation, avec auth, notifs email et PWA.',
+    outcome:
+      'Isolation multi-utilisateur, SMTP forcé en prod, IA multi-fournisseurs (Gemini/Groq/Claude), i18n FR/EN et déploiement Docker.',
+    technologies: ['React', 'TypeScript', 'Express', 'Prisma', 'PostgreSQL', 'Vite'],
+    imageUrl:
+      'https://images.unsplash.com/photo-1586281380349-632531db7ed4?q=80&w=2426&auto=format&fit=crop',
+    githubUrl: 'https://github.com/giovaniolivier/JobRadar',
+  },
+  {
     id: '1',
     title: 'TaskMaster',
     description: 'Application moderne de gestion de tâches avec priorités, catégorisation, filtrage avancé et calendrier intégré.',

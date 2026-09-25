@@ -13,19 +13,19 @@ export function Contact() {
         <span className="section-label">{t.contact.label}</span>
         <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-4 leading-none uppercase">
           {t.contact.title1}{' '}
-          <span className="text-white/20 italic font-light">{t.contact.title2}</span>
+          <span className="text-white/45 italic font-light">{t.contact.title2}</span>
         </h2>
-        <p className="text-sm md:text-base text-gray-400 font-light max-w-md mx-auto leading-relaxed">
+        <p className="text-sm md:text-base text-gray-300 font-light max-w-md mx-auto leading-relaxed">
           {t.contact.description}
         </p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
-        <div className="p-5 rounded-2xl bg-white/3 border border-white/8 hover:border-accent/30 transition-colors group">
+        <div className="p-5 rounded-2xl bg-white/5 border border-white/12 hover:border-accent/30 transition-colors group">
           <div className="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center text-accent mb-4 group-hover:scale-110 transition-transform">
             <Mail size={16} />
           </div>
-          <div className="text-[9px] uppercase font-black tracking-widest text-white/20 mb-1">
+          <div className="text-[9px] uppercase font-black tracking-widest text-white/40 mb-1">
             {t.contact.direct}
           </div>
           <a
@@ -36,11 +36,11 @@ export function Contact() {
           </a>
         </div>
 
-        <div className="p-5 rounded-2xl bg-white/3 border border-white/8 hover:border-accent/30 transition-colors group">
+        <div className="p-5 rounded-2xl bg-white/5 border border-white/12 hover:border-accent/30 transition-colors group">
           <div className="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center text-accent mb-4 group-hover:scale-110 transition-transform">
             <MessageSquare size={16} />
           </div>
-          <div className="text-[9px] uppercase font-black tracking-widest text-white/20 mb-1">
+          <div className="text-[9px] uppercase font-black tracking-widest text-white/40 mb-1">
             {t.contact.social}
           </div>
           <div className="flex gap-3 text-sm font-medium text-white">
@@ -52,7 +52,7 @@ export function Contact() {
             >
               LI
             </a>
-            <span className="text-white/10">/</span>
+            <span className="text-white/20">/</span>
             <a
               href={profile.links.github}
               target="_blank"
@@ -64,11 +64,11 @@ export function Contact() {
           </div>
         </div>
 
-        <div className="p-5 rounded-2xl bg-white/3 border border-white/8 hover:border-accent/30 transition-colors group">
+        <div className="p-5 rounded-2xl bg-white/5 border border-white/12 hover:border-accent/30 transition-colors group">
           <div className="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center text-accent mb-4 group-hover:scale-110 transition-transform">
             <Send size={16} />
           </div>
-          <div className="text-[9px] uppercase font-black tracking-widest text-white/20 mb-1">
+          <div className="text-[9px] uppercase font-black tracking-widest text-white/40 mb-1">
             {t.contact.location}
           </div>
           <div className="text-sm font-medium text-white">{profile.location.label}</div>
