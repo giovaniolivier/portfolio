@@ -103,7 +103,7 @@ export const translations = {
       title1: 'CHRONOLOGIE',
       title2: 'CARRIÈRE.',
       focus: 'Formation',
-      focusDesc: 'Master II en Informatique — EMIT, Université de Fianarantsoa (2023-2024). Licence en Informatique — EMIT (2021-2022).',
+      focusDesc: 'Master II en Informatique — EMIT, Université de Fianarantsoa (2023-2024).\nLicence en Informatique — EMIT, Université de Fianarantsoa (2021-2022).',
       items: [
         {
           id: '8',
@@ -111,13 +111,6 @@ export const translations = {
           company: 'AZ+',
           period: '2026',
           description: 'Développement de l\'application Android (APK) pour les livreurs AZ+ : courses et livraisons express, géolocalisation, notifications push, caisse et synchronisation temps réel des commandes.',
-        },
-        {
-          id: '7',
-          role: 'Développeur Full Stack — AZLive',
-          company: 'AZ+',
-          period: '2026',
-          description: 'Développement front React/TypeScript et API Django pour une plateforme de live shopping : capture automatique des « JP », gestion produits/commandes, intégrations TikTok/Facebook et diffusion vidéo en direct.',
         },
         {
           id: '6',
@@ -287,7 +280,7 @@ export const translations = {
       title1: 'CAREER',
       title2: 'TIMELINE.',
       focus: 'Education',
-      focusDesc: "Master's II in Computer Science — EMIT, University of Fianarantsoa (2023-2024). Bachelor's in Computer Science — EMIT (2021-2022).",
+      focusDesc: "Master's II in Computer Science — EMIT, University of Fianarantsoa (2023-2024).\nBachelor's in Computer Science — EMIT, University of Fianarantsoa (2021-2022).",
       items: [
         {
           id: '8',
@@ -295,13 +288,6 @@ export const translations = {
           company: 'AZ+',
           period: '2026',
           description: 'Built the Android APK for AZ+ delivery drivers: routes and express deliveries, geolocation, push notifications, cash register, and real-time order sync.',
-        },
-        {
-          id: '7',
-          role: 'Full Stack Developer — AZLive',
-          company: 'AZ+',
-          period: '2026',
-          description: 'React/TypeScript frontend and Django API for a live shopping platform: automatic “JP” capture, product/order management, TikTok/Facebook integrations, and live video streaming.',
         },
         {
           id: '6',

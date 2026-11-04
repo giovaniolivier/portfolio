@@ -197,7 +197,7 @@ export function CVPage() {
 
         <section className="cv-section">
           <h2 className="cv-section-title">{t.cv.educationTitle}</h2>
-          <p className="cv-text">{t.experience.focusDesc}</p>
+          <p className="cv-text" style={{ whiteSpace: 'pre-line' }}>{t.experience.focusDesc}</p>
         </section>
       </article>
     </div>

@@ -9,8 +9,7 @@ export const PROJECTS: Project[] = [
     outcome:
       'Isolation multi-utilisateur, SMTP forcé en prod, IA multi-fournisseurs (Gemini/Groq/Claude), i18n FR/EN et déploiement Docker.',
     technologies: ['React', 'TypeScript', 'Express', 'Prisma', 'PostgreSQL', 'Vite'],
-    imageUrl:
-      'https://images.unsplash.com/photo-1586281380349-632531db7ed4?q=80&w=2426&auto=format&fit=crop',
+    imageUrl: '/projects/jobradar.png',
     githubUrl: 'https://github.com/giovaniolivier/JobRadar',
   },
   {
@@ -19,7 +18,7 @@ export const PROJECTS: Project[] = [
     description: 'Application moderne de gestion de tâches avec priorités, catégorisation, filtrage avancé et calendrier intégré.',
     outcome: 'Interface clair/sombre, composants Shadcn/Radix et persistance via local storage.',
     technologies: ['Next.js', 'TypeScript', 'Tailwind CSS'],
-    imageUrl: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?q=80&w=2439&auto=format&fit=crop',
+    imageUrl: '/projects/taskmaster.png',
     githubUrl: 'https://github.com/giovaniolivier/taskmaster',
     liveUrl: 'https://taskmaster-dusky.vercel.app',
   },
@@ -29,7 +28,7 @@ export const PROJECTS: Project[] = [
     description: 'Application web permettant aux entrepreneurs de générer des business plans professionnels avec visualisation Business Model Canvas.',
     outcome: 'Formulaire multi-étapes, export PDF et intégration API pour une expérience fluide.',
     technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Radix UI'],
-    imageUrl: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop',
+    imageUrl: '/projects/bpg.png',
     liveUrl: 'https://bp-mg.vercel.app',
   },
   {
@@ -38,7 +37,7 @@ export const PROJECTS: Project[] = [
     description: 'Plateforme de recrutement premium reliant recruteurs et candidats via des entretiens en format « vente privée » — créneaux limités, réservation et paiement en ligne.',
     outcome: 'Architecture 3 modules (frontend React, API Laravel, backoffice admin), paiements Stripe/MangoPay, messagerie Socket.io et multilingue FR/EN.',
     technologies: ['React', 'TypeScript', 'Laravel', 'Stripe'],
-    imageUrl: 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=2426&auto=format&fit=crop',
+    imageUrl: '/projects/jobprive.png',
     liveUrl: 'https://dev.jobprive.fr/recruiter',
   },
 ];
@@ -72,14 +71,6 @@ export const EXPERIENCES: Experience[] = [
     period: '2026',
     description: 'Développement de l\'application Android (APK) pour les livreurs AZ+ : courses et livraisons express, géolocalisation, notifications push, caisse et synchronisation temps réel des commandes.',
     technologies: ['React Native', 'TypeScript', 'Socket.io', 'Axios', 'Notifee'],
-  },
-  {
-    id: '7',
-    role: 'Développeur Full Stack — AZLive',
-    company: 'AZ+',
-    period: '2026',
-    description: 'Développement front React/TypeScript et API Django pour une plateforme de live shopping : capture automatique des « JP », gestion produits/commandes, intégrations TikTok/Facebook et diffusion vidéo en direct.',
-    technologies: ['React', 'TypeScript', 'Django', 'Gemini AI', 'Tailwind CSS'],
   },
   {
     id: '6',
