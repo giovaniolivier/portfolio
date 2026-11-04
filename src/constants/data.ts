@@ -11,6 +11,7 @@ export const PROJECTS: Project[] = [
     technologies: ['React', 'TypeScript', 'Express', 'Prisma', 'PostgreSQL', 'Vite'],
     imageUrl: '/projects/jobradar.png',
     githubUrl: 'https://github.com/giovaniolivier/JobRadar',
+    liveUrl: 'https://jobradar-web-ewb5.onrender.com/',
   },
   {
     id: '1',
