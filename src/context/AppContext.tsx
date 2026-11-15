@@ -19,8 +19,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<Theme>('dark');
 
   useEffect(() => {
-    const savedLang = localStorage.getItem('lang') as Language;
-    if (savedLang) setLanguage(savedLang);
+    const savedLang = localStorage.getItem('lang');
+    if (savedLang === 'fr' || savedLang === 'en') setLanguage(savedLang);
 
     const savedTheme = localStorage.getItem('theme') as Theme | null;
     const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
@@ -28,6 +28,11 @@ export function AppProvider({ children }: { children: ReactNode }) {
     setTheme(initial);
     document.documentElement.classList.toggle('light', initial === 'light');
   }, []);
+
+  // Langue du document pour les lecteurs d'écran, la traduction auto et le SEO.
+  useEffect(() => {
+    document.documentElement.lang = language;
+  }, [language]);
 
   const handleSetLanguage = (lang: Language) => {
     setLanguage(lang);
