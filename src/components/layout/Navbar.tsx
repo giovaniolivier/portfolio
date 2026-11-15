@@ -3,8 +3,10 @@ import { Menu, X, Sun, Moon, Languages } from 'lucide-react';
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react';
 import { useApp } from '../../context/AppContext';
 import { profile } from '../../constants/profile';
+import { useActiveSection } from '../../hooks/useActiveSection';
 
 const MOBILE_MENU_ID = 'mobile-menu';
+const SECTION_IDS = ['about', 'skills', 'projects', 'experience', 'contact'] as const;
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -60,13 +62,15 @@ export function Navbar() {
     }
   };
 
-  const navLinks = [
-    { name: t.nav.index, href: '#' },
-    { name: t.nav.about, href: '#about' },
-    { name: t.nav.projects, href: '#projects' },
-    { name: t.nav.skills, href: '#skills' },
-    { name: t.nav.contact, href: '#contact' },
+  // Dans l'ordre de la page. « Contact » a son propre bouton sur ordinateur.
+  const sectionLinks = [
+    { id: 'about', name: t.nav.about },
+    { id: 'skills', name: t.nav.skills },
+    { id: 'projects', name: t.nav.projects },
+    { id: 'experience', name: t.nav.experience },
   ];
+  const mobileLinks = [...sectionLinks, { id: 'contact', name: t.nav.contact }];
+  const activeSection = useActiveSection(SECTION_IDS);
 
   const themeLabel = theme === 'dark' ? t.a11y.themeToLight : t.a11y.themeToDark;
   const switchLanguage = () => setLanguage(language === 'fr' ? 'en' : 'fr');
@@ -91,16 +95,28 @@ export function Navbar() {
           </motion.a>
 
           <ul className="hidden md:flex items-center gap-0.5 px-2">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  className="block px-2.5 py-1.5 text-[10px] uppercase tracking-[0.15em] font-bold text-fg-subtle hover:text-fg transition-colors"
-                >
-                  {link.name}
-                </a>
-              </li>
-            ))}
+            {sectionLinks.map((link) => {
+              const isActive = activeSection === link.id;
+              return (
+                <li key={link.id}>
+                  <a
+                    href={`#${link.id}`}
+                    aria-current={isActive ? 'location' : undefined}
+                    className={`relative block px-2.5 py-2 text-[11px] uppercase tracking-[0.15em] font-bold transition-colors ${
+                      isActive ? 'text-fg' : 'text-fg-subtle hover:text-fg'
+                    }`}
+                  >
+                    {link.name}
+                    <span
+                      aria-hidden="true"
+                      className={`absolute left-2.5 right-2.5 bottom-0.5 h-px bg-accent transition-transform duration-300 origin-left ${
+                        isActive ? 'scale-x-100' : 'scale-x-0'
+                      }`}
+                    />
+                  </a>
+                </li>
+              );
+            })}
           </ul>
         </nav>
 
@@ -110,9 +126,9 @@ export function Navbar() {
             onClick={toggleTheme}
             aria-label={themeLabel}
             title={themeLabel}
-            className="w-8 h-8 rounded-full bg-tint-3 border border-line flex items-center justify-center text-fg-subtle hover:text-fg transition-all cursor-pointer"
+            className="w-10 h-10 rounded-full bg-tint-3 border border-line flex items-center justify-center text-fg-subtle hover:text-fg transition-all cursor-pointer"
           >
-            {theme === 'dark' ? <Sun size={14} aria-hidden="true" /> : <Moon size={14} aria-hidden="true" />}
+            {theme === 'dark' ? <Sun size={15} aria-hidden="true" /> : <Moon size={15} aria-hidden="true" />}
           </button>
 
           <button
@@ -120,7 +136,7 @@ export function Navbar() {
             onClick={switchLanguage}
             aria-label={t.a11y.switchLanguage}
             title={t.a11y.switchLanguage}
-            className="h-8 px-2.5 rounded-full bg-tint-3 border border-line flex items-center gap-1.5 text-fg-subtle hover:text-fg transition-all cursor-pointer text-[10px] font-bold uppercase tracking-widest"
+            className="h-10 px-3 rounded-full bg-tint-3 border border-line flex items-center gap-1.5 text-fg-subtle hover:text-fg transition-all cursor-pointer text-[11px] font-bold uppercase tracking-widest"
           >
             <Languages size={12} aria-hidden="true" />
             {language}
@@ -129,8 +145,9 @@ export function Navbar() {
           <motion.a
             href="#contact"
             whileHover={{ scale: 1.02 }}
-            className={`px-4 py-1.5 rounded-full font-bold text-[10px] uppercase tracking-widest transition-all duration-500 ${
-              scrolled ? 'btn-primary py-1.5! px-4!' : 'bg-tint-3 border border-line text-fg'
+            aria-current={activeSection === 'contact' ? 'location' : undefined}
+            className={`h-10 inline-flex items-center px-5 rounded-full font-bold text-[11px] uppercase tracking-widest transition-all duration-500 ${
+              scrolled ? 'btn-primary py-0! px-5!' : 'bg-tint-3 border border-line text-fg'
             }`}
           >
             {t.nav.cta}
@@ -140,7 +157,7 @@ export function Navbar() {
         <button
           ref={menuButtonRef}
           type="button"
-          className="md:hidden w-8 h-8 rounded-full bg-tint-3 border border-line flex items-center justify-center text-fg"
+          className="md:hidden w-10 h-10 rounded-full bg-tint-3 border border-line flex items-center justify-center text-fg"
           onClick={() => setIsOpen((open) => !open)}
           aria-label={isOpen ? t.a11y.closeMenu : t.a11y.openMenu}
           aria-expanded={isOpen}
@@ -173,15 +190,18 @@ export function Navbar() {
               onClick={(e) => e.stopPropagation()}
               onKeyDown={trapFocus}
             >
-              {navLinks.map((link, i) => (
+              {mobileLinks.map((link, i) => (
                 <motion.a
-                  key={link.href}
-                  href={link.href}
+                  key={link.id}
+                  href={`#${link.id}`}
+                  aria-current={activeSection === link.id ? 'location' : undefined}
                   initial={{ opacity: 0, x: 16 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.08 }}
+                  transition={{ delay: i * 0.06 }}
                   onClick={() => setIsOpen(false)}
-                  className="text-2xl font-bold font-display text-fg-subtle hover:text-fg transition-colors"
+                  className={`py-1 text-2xl font-bold font-display transition-colors ${
+                    activeSection === link.id ? 'text-accent' : 'text-fg-subtle hover:text-fg'
+                  }`}
                 >
                   {link.name}
                 </motion.a>

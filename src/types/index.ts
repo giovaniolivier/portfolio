@@ -3,11 +3,15 @@ export type Language = 'fr' | 'en';
 /** Texte identique dans toutes les langues, ou décliné par langue. */
 export type LocalizedText = string | Record<Language, string>;
 
+/** Liste de puces déclinée par langue. */
+export type LocalizedList = Record<Language, string[]>;
+
 export interface Project {
   id: string;
   title: LocalizedText;
   description: LocalizedText;
-  outcome?: LocalizedText;
+  /** Points clés, affichés en liste à puces. */
+  highlights?: LocalizedList;
   technologies: string[];
   imageUrl: string;
   githubUrl?: string;

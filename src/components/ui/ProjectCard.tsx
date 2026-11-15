@@ -10,14 +10,15 @@ interface ProjectCardProps {
   index?: number;
 }
 
+// 40 px : zone tactile confortable (WCAG 2.5.8 demande au moins 24 px).
 const iconLinkClass =
-  'p-1.5 rounded-full bg-tint-3 hover:bg-tint-4 text-fg-subtle hover:text-fg transition-all';
+  'w-10 h-10 flex items-center justify-center rounded-full bg-tint-3 hover:bg-tint-4 text-fg-subtle hover:text-fg transition-all';
 
 export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
   const { t, language } = useApp();
   const title = localize(project.title, language);
   const description = localize(project.description, language);
-  const outcome = localize(project.outcome, language);
+  const highlights = project.highlights?.[language] ?? [];
   const hasBothRepos = Boolean(project.githubUrl && project.githubBackendUrl);
 
   return (
@@ -25,7 +26,7 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
       initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ delay: index * 0.08 }}
+      transition={{ delay: (index % 2) * 0.08 }}
       className="group relative flex flex-col w-full bg-surface rounded-2xl overflow-hidden border border-line-soft hover:border-line-strong transition-all duration-500 shadow-card"
     >
       <div
@@ -33,23 +34,26 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
         aria-hidden="true"
       />
 
-      <div className="relative aspect-16/10 overflow-hidden">
+      {/* Cadre 2:1, le format des captures : l'image n'est plus rognée sur les côtés. */}
+      <div className="relative aspect-2/1 overflow-hidden border-b border-line-soft">
         <img
           src={project.imageUrl}
           alt={title}
+          width={800}
+          height={400}
           loading="lazy"
           decoding="async"
-          className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+          className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
         />
         <div className="absolute inset-0 bg-veil" aria-hidden="true" />
       </div>
 
-      <div className="p-5 flex flex-col grow">
-        <div className="flex justify-between items-start mb-2 gap-2">
-          <h3 className="text-base font-bold font-display text-fg group-hover:text-accent transition-colors">
+      <div className="p-6 flex flex-col grow">
+        <div className="flex justify-between items-center mb-3 gap-3">
+          <h3 className="text-lg font-bold font-display text-fg group-hover:text-accent transition-colors">
             {title}
           </h3>
-          <div className="flex gap-1.5 shrink-0">
+          <div className="flex gap-2 shrink-0">
             {project.githubUrl && (
               <a
                 href={project.githubUrl}
@@ -59,7 +63,7 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
                 aria-label={`${title} — ${hasBothRepos ? t.a11y.sourceFrontend : t.a11y.sourceCode}`}
                 title={hasBothRepos ? t.a11y.sourceFrontend : t.a11y.sourceCode}
               >
-                <Github size={14} aria-hidden="true" />
+                <Github size={16} aria-hidden="true" />
               </a>
             )}
             {project.githubBackendUrl && (
@@ -71,7 +75,7 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
                 aria-label={`${title} — ${t.a11y.sourceBackend}`}
                 title={t.a11y.sourceBackend}
               >
-                <Github size={14} aria-hidden="true" />
+                <Github size={16} aria-hidden="true" />
               </a>
             )}
             {project.liveUrl && (
@@ -83,20 +87,25 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
                 aria-label={`${title} — ${t.a11y.liveDemo}`}
                 title={t.a11y.liveDemo}
               >
-                <ArrowUpRight size={14} aria-hidden="true" />
+                <ArrowUpRight size={16} aria-hidden="true" />
               </a>
             )}
           </div>
         </div>
 
-        <p className="text-body-muted font-light leading-relaxed text-xs mb-3 grow">{description}</p>
+        <p className="text-body-muted font-light leading-relaxed text-sm mb-4 grow">{description}</p>
 
-        {outcome && (
-          <div className="mb-3 p-3 rounded-lg bg-tint-2 border border-line-soft">
-            <div className="text-[10px] uppercase font-bold tracking-widest text-accent mb-0.5">
-              {t.projects.impact}
-            </div>
-            <p className="text-xs text-body font-light italic">"{outcome}"</p>
+        {highlights.length > 0 && (
+          <div className="mb-4 p-4 rounded-lg bg-tint-2 border border-line-soft">
+            <h4 className="text-[11px] uppercase font-bold tracking-[0.15em] text-accent mb-2">{t.projects.impact}</h4>
+            <ul className="space-y-1.5">
+              {highlights.map((item) => (
+                <li key={item} className="flex gap-2 text-sm text-body font-light leading-snug">
+                  <span className="mt-[0.45em] h-1 w-1 shrink-0 rounded-full bg-accent" aria-hidden="true" />
+                  {item}
+                </li>
+              ))}
+            </ul>
           </div>
         )}
 
@@ -104,7 +113,7 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
           {project.technologies.map((tech) => (
             <li
               key={tech}
-              className="px-2 py-0.5 text-[10px] uppercase tracking-widest font-black bg-tint-2 text-fg-subtle border border-line-soft rounded group-hover:border-accent/20 group-hover:text-accent transition-all duration-500"
+              className="px-2 py-0.5 text-[11px] uppercase tracking-[0.12em] font-bold bg-tint-2 text-fg-subtle border border-line-soft rounded group-hover:border-accent/20 group-hover:text-accent transition-all duration-500"
             >
               {tech}
             </li>

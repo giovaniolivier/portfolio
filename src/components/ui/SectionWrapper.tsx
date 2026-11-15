@@ -1,23 +1,23 @@
-import { motion } from 'motion/react';
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 interface SectionWrapperProps {
   children: ReactNode;
   id?: string;
+  /** Contenu centré : marges internes, largeur max. */
   className?: string;
+  /** Bande pleine largeur : fond, bordures (ex. "bg-tint-1", "border-t border-line"). */
+  outerClassName?: string;
 }
 
-export function SectionWrapper({ children, id, className = "" }: SectionWrapperProps) {
+/**
+ * Section de page : une bande pleine largeur (fond éventuel) qui contient une colonne centrée.
+ * Pas d'animation d'apparition au niveau de la section : le texte reste lisible même en
+ * défilant vite ; les éléments (cartes, listes) gèrent leurs propres animations.
+ */
+export function SectionWrapper({ children, id, className = '', outerClassName = '' }: SectionWrapperProps) {
   return (
-    <motion.section
-      id={id}
-      initial={{ opacity: 0.2, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.15, margin: "0px 0px -40px 0px" }}
-      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-      className={`py-20 md:py-28 px-5 md:px-10 max-w-5xl mx-auto relative ${className}`}
-    >
-      {children}
-    </motion.section>
+    <section id={id} className={`relative scroll-mt-16 ${outerClassName}`}>
+      <div className={`py-20 md:py-28 px-5 md:px-10 max-w-5xl mx-auto ${className}`}>{children}</div>
+    </section>
   );
 }

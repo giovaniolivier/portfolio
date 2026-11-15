@@ -8,7 +8,7 @@ export function Projects() {
   const { t } = useApp();
 
   return (
-    <SectionWrapper id="projects" className="bg-tint-1">
+    <SectionWrapper id="projects" outerClassName="bg-tint-1">
       <div className="text-center mb-10">
         <span className="section-label">{t.projects.label}</span>
         <h2 className="text-3xl md:text-5xl font-bold font-display text-fg tracking-tight mb-3 uppercase">
@@ -18,7 +18,8 @@ export function Projects() {
         <p className="max-w-lg mx-auto text-body text-sm font-light">{t.projects.description}</p>
       </div>
 
-      <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      {/* 2 colonnes : 4 projets forment une grille 2×2 équilibrée, sans carte isolée. */}
+      <ul className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {PROJECTS.map((project, i) => (
           <li key={project.id} className="flex">
             <ProjectCard project={project} index={i} />
@@ -31,7 +32,7 @@ export function Projects() {
           href={profile.links.github}
           target="_blank"
           rel="noopener noreferrer"
-          className="btn-secondary uppercase tracking-widest text-[10px] inline-block"
+          className="btn-secondary uppercase tracking-[0.15em] text-[11px] inline-block"
         >
           {t.projects.viewMore}
         </a>

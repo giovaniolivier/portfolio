@@ -143,6 +143,11 @@ html.light {
 }
 
 @layer base {
+  /* Défilement doux vers les ancres (désactivé si l'utilisateur réduit les animations). */
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     background-color: var(--page-bg);
     color: var(--page-muted);
@@ -249,7 +254,7 @@ html.light {
     background: color-mix(in srgb, var(--page-fg) 5%, transparent);
     border: 1px solid var(--border);
     color: var(--label-fg);
-    @apply inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full text-[10px] uppercase font-bold tracking-[0.2em] mb-4;
+    @apply inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full text-[11px] uppercase font-bold tracking-[0.15em] mb-4;
   }
 
   .hero-glow {

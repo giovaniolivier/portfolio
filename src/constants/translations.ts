@@ -7,11 +7,12 @@ export type { Language };
  * `fr` définit la structure ; TypeScript vérifie que `en` la respecte exactement.
  */
 const fr = {
+  // Même ordre et mêmes libellés que les étiquettes des sections.
   nav: {
-    index: 'Index',
     about: 'Profil',
+    skills: 'Compétences',
     projects: 'Projets',
-    skills: 'Expertise',
+    experience: 'Parcours',
     contact: 'Contact',
     cta: 'Contact',
   },
@@ -67,7 +68,7 @@ const fr = {
     stats2: 'Diplômes',
   },
   skills: {
-    label: 'Technologies',
+    label: 'Compétences',
     title1: "L'ÉCOSYSTÈME",
     title2: 'TECHNIQUE.',
     description: 'Langages, frameworks et outils que j\'utilise au quotidien pour concevoir des applications web, mobiles et des solutions sur mesure.',
@@ -79,7 +80,7 @@ const fr = {
     },
   },
   projects: {
-    label: 'Portfolio',
+    label: 'Projets',
     title1: 'PROJETS',
     title2: 'SÉLECTIONNÉS.',
     description: 'Une sélection de projets personnels et professionnels, du mobile au web, avec une attention particulière à l\'expérience utilisateur.',
@@ -102,12 +103,13 @@ const fr = {
     social: 'Réseaux Sociaux',
     location: 'Localisation',
     form: {
-      name: 'Nom Complet',
-      namePlaceholder: 'Indispensable',
-      email: 'Adresse Email',
-      emailPlaceholder: 'Indispensable',
-      message: 'Votre Message',
-      messagePlaceholder: 'Décrivez votre vision...',
+      name: 'Nom complet',
+      namePlaceholder: 'Jeanne Rakoto',
+      email: 'Adresse e-mail',
+      emailPlaceholder: 'vous@exemple.com',
+      message: 'Votre message',
+      messagePlaceholder: 'Votre projet, vos délais, votre budget…',
+      requiredNote: 'Tous les champs sont obligatoires.',
       submit: 'Démarrer la collaboration',
       sending: 'Envoi en cours…',
       success: 'Merci ! Votre message a bien été envoyé, je vous réponds rapidement.',
@@ -141,10 +143,10 @@ export type Translations = typeof fr;
 
 const en: Translations = {
   nav: {
-    index: 'Index',
     about: 'Profile',
+    skills: 'Skills',
     projects: 'Projects',
-    skills: 'Expertise',
+    experience: 'Journey',
     contact: 'Contact',
     cta: 'Contact',
   },
@@ -200,7 +202,7 @@ const en: Translations = {
     stats2: 'Degrees',
   },
   skills: {
-    label: 'Technologies',
+    label: 'Skills',
     title1: 'TECHNICAL',
     title2: 'ECOSYSTEM.',
     description: 'Languages, frameworks, and tools I use daily to build web, mobile, and custom software solutions.',
@@ -212,7 +214,7 @@ const en: Translations = {
     },
   },
   projects: {
-    label: 'Portfolio',
+    label: 'Projects',
     title1: 'SELECTED',
     title2: 'PROJECTS.',
     description: 'A selection of personal and professional projects, from mobile to web, with a strong focus on user experience.',
@@ -235,12 +237,13 @@ const en: Translations = {
     social: 'Social Networks',
     location: 'Location',
     form: {
-      name: 'Full Name',
-      namePlaceholder: 'Required',
-      email: 'Email Address',
-      emailPlaceholder: 'Required',
-      message: 'Your Message',
-      messagePlaceholder: 'Describe your vision...',
+      name: 'Full name',
+      namePlaceholder: 'Jane Smith',
+      email: 'Email address',
+      emailPlaceholder: 'you@example.com',
+      message: 'Your message',
+      messagePlaceholder: 'Your project, timeline, budget…',
+      requiredNote: 'All fields are required.',
       submit: 'Start Collaboration',
       sending: 'Sending…',
       success: 'Thank you! Your message has been sent, I will get back to you shortly.',

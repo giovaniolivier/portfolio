@@ -36,8 +36,8 @@ export function Skills() {
           >
             <div className="group">
               <div className="flex items-center gap-2 mb-4">
-                <span className="text-[10px] font-mono text-accent" aria-hidden="true">0{idx + 1}</span>
-                <h3 className="text-[10px] font-black uppercase tracking-[0.25em] text-fg-subtle group-hover:text-fg transition-colors">
+                <span className="text-[11px] font-mono text-accent" aria-hidden="true">0{idx + 1}</span>
+                <h3 className="text-[11px] font-black uppercase tracking-[0.15em] text-fg-subtle group-hover:text-fg transition-colors">
                   {cat.label}
                 </h3>
               </div>

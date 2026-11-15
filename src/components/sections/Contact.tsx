@@ -16,7 +16,17 @@ type Status = 'idle' | 'sending' | 'success' | 'mailto' | 'error' | 'invalid';
 
 const inputClass =
   'w-full bg-transparent border-b border-line py-2.5 text-sm text-fg placeholder:text-placeholder focus:outline-none focus:border-accent transition-colors font-light';
-const labelClass = 'text-[10px] font-black uppercase tracking-[0.25em] text-fg-subtle ml-0.5';
+const labelClass = 'text-[11px] font-bold uppercase tracking-[0.15em] text-fg-subtle ml-0.5';
+const cardLabelClass = 'text-[11px] uppercase font-bold tracking-[0.15em] text-fg-subtle mb-1';
+
+/** Astérisque visuel ; l'attribut `required` informe déjà les lecteurs d'écran. */
+function RequiredMark() {
+  return (
+    <span className="text-accent" aria-hidden="true">
+      {' '}*
+    </span>
+  );
+}
 
 function openMailto(subject: string, body: string) {
   const query = `subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
@@ -70,7 +80,7 @@ export function Contact() {
   const sending = status === 'sending';
 
   return (
-    <SectionWrapper id="contact" className="!pt-24 md:!pt-32 !pb-28 md:!pb-36 border-t border-line">
+    <SectionWrapper id="contact" outerClassName="border-t border-line" className="pt-24! md:pt-32! pb-28! md:pb-36!">
       <div className="max-w-2xl mx-auto text-center mb-12">
         <span className="section-label">{t.contact.label}</span>
         <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-4 leading-none uppercase">
@@ -87,7 +97,7 @@ export function Contact() {
           <div className="w-9 h-9 rounded-xl bg-tint-3 flex items-center justify-center text-accent mb-4 group-hover:scale-110 transition-transform">
             <Mail size={16} aria-hidden="true" />
           </div>
-          <div className="text-[10px] uppercase font-black tracking-widest text-fg-subtle mb-1">
+          <div className={cardLabelClass}>
             {t.contact.direct}
           </div>
           <a
@@ -102,28 +112,26 @@ export function Contact() {
           <div className="w-9 h-9 rounded-xl bg-tint-3 flex items-center justify-center text-accent mb-4 group-hover:scale-110 transition-transform">
             <MessageSquare size={16} aria-hidden="true" />
           </div>
-          <div className="text-[10px] uppercase font-black tracking-widest text-fg-subtle mb-1">
+          <div className={cardLabelClass}>
             {t.contact.social}
           </div>
-          <div className="flex gap-3 text-sm font-medium text-fg">
+          <div className="flex flex-wrap gap-x-3 text-sm font-medium text-fg">
             <a
               href={profile.links.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="LinkedIn"
-              className="hover:text-accent transition-colors"
+              className="py-1 hover:text-accent transition-colors"
             >
-              LI
+              LinkedIn
             </a>
-            <span className="text-fg-faint" aria-hidden="true">/</span>
+            <span className="py-1 text-fg-faint" aria-hidden="true">/</span>
             <a
               href={profile.links.github}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="GitHub"
-              className="hover:text-accent transition-colors"
+              className="py-1 hover:text-accent transition-colors"
             >
-              GH
+              GitHub
             </a>
           </div>
         </div>
@@ -132,7 +140,7 @@ export function Contact() {
           <div className="w-9 h-9 rounded-xl bg-tint-3 flex items-center justify-center text-accent mb-4 group-hover:scale-110 transition-transform">
             <Send size={16} aria-hidden="true" />
           </div>
-          <div className="text-[10px] uppercase font-black tracking-widest text-fg-subtle mb-1">
+          <div className={cardLabelClass}>
             {t.contact.location}
           </div>
           <div className="text-sm font-medium text-fg">{profile.location.label}</div>
@@ -156,6 +164,7 @@ export function Contact() {
             <div className="space-y-2">
               <label htmlFor="contact-name" className={labelClass}>
                 {t.contact.form.name}
+                <RequiredMark />
               </label>
               <input
                 id="contact-name"
@@ -171,6 +180,7 @@ export function Contact() {
             <div className="space-y-2">
               <label htmlFor="contact-email" className={labelClass}>
                 {t.contact.form.email}
+                <RequiredMark />
               </label>
               <input
                 id="contact-email"
@@ -188,6 +198,7 @@ export function Contact() {
           <div className="space-y-2">
             <label htmlFor="contact-message" className={labelClass}>
               {t.contact.form.message}
+              <RequiredMark />
             </label>
             <textarea
               id="contact-message"
@@ -210,33 +221,40 @@ export function Contact() {
             className="hidden"
           />
 
-          <button
-            type="submit"
-            disabled={sending}
-            className="btn-primary w-full flex items-center justify-center gap-2 py-3 group text-[10px] uppercase tracking-widest disabled:opacity-60 disabled:cursor-wait"
-          >
-            {sending ? t.contact.form.sending : t.contact.form.submit}
-            <Send
-              size={12}
-              aria-hidden="true"
-              className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
-            />
-          </button>
-
-          <p role="status" aria-live="polite" className="min-h-5 text-center text-xs font-light">
-            {status === 'success' && <span className="text-accent">{t.contact.form.success}</span>}
-            {status === 'mailto' && <span className="text-body">{t.contact.form.mailtoOpened}</span>}
-            {status === 'invalid' && <span className="text-danger">{t.contact.form.invalid}</span>}
-            {status === 'error' && (
-              <span className="text-danger">
-                {t.contact.form.error}{' '}
-                <a href={`mailto:${profile.email}`} className="underline hover:text-accent">
-                  {profile.email}
-                </a>
-              </span>
-            )}
-          </p>
+          <div className="space-y-3">
+            <p className="text-xs text-body-muted">
+              <span className="text-accent" aria-hidden="true">* </span>
+              {t.contact.form.requiredNote}
+            </p>
+            <button
+              type="submit"
+              disabled={sending}
+              className="btn-primary w-full flex items-center justify-center gap-2 py-3 group text-[11px] uppercase tracking-[0.15em] disabled:opacity-60 disabled:cursor-wait"
+            >
+              {sending ? t.contact.form.sending : t.contact.form.submit}
+              <Send
+                size={12}
+                aria-hidden="true"
+                className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+              />
+            </button>
+          </div>
         </form>
+
+        {/* Hors du flux du formulaire : n'occupe aucune place tant qu'il est vide. */}
+        <p role="status" aria-live="polite" className="text-center text-xs font-light [&:not(:empty)]:mt-4">
+          {status === 'success' && <span className="text-accent">{t.contact.form.success}</span>}
+          {status === 'mailto' && <span className="text-body">{t.contact.form.mailtoOpened}</span>}
+          {status === 'invalid' && <span className="text-danger">{t.contact.form.invalid}</span>}
+          {status === 'error' && (
+            <span className="text-danger">
+              {t.contact.form.error}{' '}
+              <a href={`mailto:${profile.email}`} className="underline hover:text-accent">
+                {profile.email}
+              </a>
+            </span>
+          )}
+        </p>
       </motion.div>
     </SectionWrapper>
   );

@@ -14,9 +14,19 @@ export const PROJECTS: Project[] = [
       fr: 'Assistant de veille et de tri d’offres : CV → analyse scorée → pipeline → lettre de motivation, avec auth, notifs email et PWA.',
       en: 'Job-search assistant: CV → scored analysis → pipeline → cover letter, with auth, email alerts, and PWA.',
     },
-    outcome: {
-      fr: 'Isolation multi-utilisateur, SMTP forcé en prod, IA multi-fournisseurs (Gemini/Groq/Claude), i18n FR/EN et déploiement Docker.',
-      en: 'Per-user data isolation, SMTP required in production, multi-provider AI (Gemini/Groq/Claude), FR/EN i18n, and Docker deploy.',
+    highlights: {
+      fr: [
+        'Isolation multi-utilisateur',
+        'SMTP forcé en production',
+        'IA multi-fournisseurs (Gemini, Groq, Claude)',
+        'i18n FR/EN et déploiement Docker',
+      ],
+      en: [
+        'Per-user data isolation',
+        'SMTP required in production',
+        'Multi-provider AI (Gemini, Groq, Claude)',
+        'FR/EN i18n and Docker deploy',
+      ],
     },
     technologies: ['React', 'TypeScript', 'Express', 'Prisma', 'PostgreSQL', 'Vite'],
     imageUrl: '/projects/jobradar.webp',
@@ -30,9 +40,9 @@ export const PROJECTS: Project[] = [
       fr: 'Application moderne de gestion de tâches avec priorités, catégorisation, filtrage avancé et calendrier intégré.',
       en: 'Modern task management app with priorities, categorization, advanced filtering, and an integrated calendar.',
     },
-    outcome: {
-      fr: 'Interface clair/sombre, composants Shadcn/Radix et persistance via local storage.',
-      en: 'Light/dark UI, Shadcn/Radix components, and local storage persistence.',
+    highlights: {
+      fr: ['Interface clair/sombre', 'Composants Shadcn/Radix', 'Persistance via local storage'],
+      en: ['Light/dark UI', 'Shadcn/Radix components', 'Local storage persistence'],
     },
     technologies: ['Next.js', 'TypeScript', 'Tailwind CSS'],
     imageUrl: '/projects/taskmaster.webp',
@@ -46,9 +56,9 @@ export const PROJECTS: Project[] = [
       fr: 'Application web permettant aux entrepreneurs de générer des business plans professionnels avec visualisation Business Model Canvas.',
       en: 'Web app helping entrepreneurs generate professional business plans with Business Model Canvas visualization.',
     },
-    outcome: {
-      fr: 'Formulaire multi-étapes, export PDF et intégration API pour une expérience fluide.',
-      en: 'Multi-step form, PDF export, and API integration for a smooth workflow.',
+    highlights: {
+      fr: ['Formulaire multi-étapes', 'Export PDF', 'Intégration API pour une expérience fluide'],
+      en: ['Multi-step form', 'PDF export', 'API integration for a smooth workflow'],
     },
     technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Radix UI'],
     imageUrl: '/projects/bpg.webp',
@@ -61,9 +71,19 @@ export const PROJECTS: Project[] = [
       fr: 'Plateforme de recrutement premium reliant recruteurs et candidats via des entretiens en format « vente privée » — créneaux limités, réservation et paiement en ligne.',
       en: 'Premium recruitment platform connecting recruiters and candidates through private-sale-style interview slots — limited availability, booking, and online payment.',
     },
-    outcome: {
-      fr: 'Architecture 3 modules (frontend React, API Laravel, backoffice admin), paiements Stripe/MangoPay, messagerie Socket.io et multilingue FR/EN.',
-      en: '3-module architecture (React frontend, Laravel API, admin backoffice), Stripe/MangoPay payments, Socket.io messaging, and FR/EN i18n.',
+    highlights: {
+      fr: [
+        'Architecture 3 modules (frontend React, API Laravel, backoffice admin)',
+        'Paiements Stripe/MangoPay',
+        'Messagerie Socket.io',
+        'Multilingue FR/EN',
+      ],
+      en: [
+        '3-module architecture (React frontend, Laravel API, admin backoffice)',
+        'Stripe/MangoPay payments',
+        'Socket.io messaging',
+        'FR/EN i18n',
+      ],
     },
     technologies: ['React', 'TypeScript', 'Laravel', 'Stripe'],
     imageUrl: '/projects/jobprive.webp',

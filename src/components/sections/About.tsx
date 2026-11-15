@@ -16,9 +16,10 @@ export function About() {
             <span className="italic font-light text-fg-dim tracking-tight">{t.about.title2}</span>
           </h2>
           <div className="w-16 h-px bg-line-strong mb-5" aria-hidden="true" />
-          <div className="flex gap-6 font-mono text-[10px] uppercase tracking-[0.25em] text-fg-subtle">
-            <div>[ {profile.stats.years} {t.about.experienceSuffix} ]</div>
-            <div>[ {t.about.location} ]</div>
+          {/* Chaque badge reste sur une ligne ; ils passent l'un sous l'autre si la place manque. */}
+          <div className="flex flex-wrap gap-x-6 gap-y-2 font-mono text-[11px] uppercase tracking-[0.15em] text-fg-subtle">
+            <div className="whitespace-nowrap">[ {profile.stats.years} {t.about.experienceSuffix} ]</div>
+            <div className="whitespace-nowrap">[ {t.about.location} ]</div>
           </div>
         </div>
 
@@ -37,11 +38,11 @@ export function About() {
 
           <dl className="pt-5 border-t border-line-soft grid grid-cols-2 gap-8">
             <div className="flex flex-col-reverse">
-              <dt className="text-[10px] uppercase font-bold tracking-[0.2em] text-body-muted">{t.about.stats1}</dt>
+              <dt className="text-[11px] uppercase font-bold tracking-[0.15em] text-body-muted">{t.about.stats1}</dt>
               <dd className="text-2xl font-display font-bold text-fg mb-1 tracking-tighter italic">{profile.stats.companies}</dd>
             </div>
             <div className="flex flex-col-reverse">
-              <dt className="text-[10px] uppercase font-bold tracking-[0.2em] text-body-muted">{t.about.stats2}</dt>
+              <dt className="text-[11px] uppercase font-bold tracking-[0.15em] text-body-muted">{t.about.stats2}</dt>
               <dd className="text-2xl font-display font-bold text-fg mb-1 tracking-tighter italic">{profile.stats.degrees}</dd>
             </div>
           </dl>

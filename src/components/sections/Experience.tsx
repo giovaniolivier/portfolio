@@ -19,7 +19,7 @@ export function Experience() {
           <div className="p-5 rounded-2xl bg-tint-3 border border-line backdrop-blur-xl">
             <div className="flex items-center gap-3 mb-2">
               <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" aria-hidden="true" />
-              <h3 className="text-[10px] font-bold uppercase tracking-widest text-fg-muted">
+              <h3 className="text-[11px] font-bold uppercase tracking-widest text-fg-muted">
                 {t.experience.focus}
               </h3>
             </div>
@@ -33,22 +33,23 @@ export function Experience() {
           {EXPERIENCES.map((exp, idx) => (
             <motion.li
               key={exp.id}
-              initial={{ opacity: 0.35, x: 12 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ delay: idx * 0.06 }}
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '0px 0px -10% 0px' }}
+              transition={{ duration: 0.4, ease: 'easeOut' }}
               className="group relative"
             >
-              <div className="flex items-center justify-between gap-3 mb-3">
-                <div className="flex items-center gap-3 min-w-0">
+              {/* L'intitulé passe à la ligne au lieu d'être tronqué (mobile). */}
+              <div className="flex items-start justify-between gap-3 mb-2">
+                <div className="flex items-baseline gap-3 min-w-0">
                   <span className="text-2xl font-display font-black text-fg-faint italic shrink-0" aria-hidden="true">
                     {String(idx + 1).padStart(2, '0')}
                   </span>
-                  <h3 className="text-lg font-bold text-fg group-hover:text-accent transition-colors truncate">
+                  <h3 className="text-lg font-bold leading-snug text-fg group-hover:text-accent transition-colors text-balance">
                     {localize(exp.role, language)}
                   </h3>
                 </div>
-                <span className="text-[10px] font-mono tracking-widest text-fg-subtle uppercase whitespace-nowrap">
+                <span className="pt-1.5 text-[11px] font-mono tracking-[0.12em] text-fg-subtle uppercase whitespace-nowrap">
                   {exp.period}
                 </span>
               </div>
@@ -66,7 +67,7 @@ export function Experience() {
                   {exp.technologies.map((tech) => (
                     <li
                       key={tech}
-                      className="px-2 py-0.5 text-[10px] uppercase tracking-widest font-black bg-tint-3 text-fg-subtle border border-line rounded"
+                      className="px-2 py-0.5 text-[11px] uppercase tracking-widest font-black bg-tint-3 text-fg-subtle border border-line rounded"
                     >
                       {tech}
                     </li>

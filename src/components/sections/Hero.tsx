@@ -59,7 +59,7 @@ export function Hero() {
           <dl className="grid grid-cols-2 md:grid-cols-4 gap-4 py-5 border-y border-line">
             {metrics.map((m) => (
               <div key={m.label} className="text-center flex flex-col-reverse">
-                <dt className="text-[10px] uppercase tracking-widest font-mono text-body-muted">{m.label}</dt>
+                <dt className="text-[11px] uppercase tracking-widest font-mono text-body-muted">{m.label}</dt>
                 <dd className="text-base font-display font-bold text-fg mb-0.5">{m.value}</dd>
               </div>
             ))}
@@ -67,7 +67,7 @@ export function Hero() {
 
           <a
             href={profile.links.cv}
-            className="inline-block mt-6 text-[10px] uppercase tracking-widest text-fg-subtle hover:text-accent transition-colors"
+            className="inline-block mt-6 text-[11px] uppercase tracking-widest text-fg-subtle hover:text-accent transition-colors"
           >
             {t.hero.ctaResume} <span aria-hidden="true">→</span>
           </a>
@@ -75,14 +75,14 @@ export function Hero() {
       </motion.div>
 
       <div className="absolute bottom-8 left-8 hidden lg:block" aria-hidden="true">
-        <div className="flex items-center gap-3 text-[10px] font-mono uppercase tracking-[0.3em] text-fg-subtle">
+        <div className="flex items-center gap-3 text-[11px] font-mono uppercase tracking-[0.15em] text-fg-subtle">
           <div className="w-6 h-px bg-line-strong" />
           {t.common.scroll}
         </div>
       </div>
 
       <div className="absolute bottom-8 right-8 hidden lg:block" aria-hidden="true">
-        <div className="text-[10px] font-mono tracking-widest text-fg-subtle">
+        <div className="text-[11px] font-mono tracking-widest text-fg-subtle">
           [ {profile.location.coords} ]
         </div>
       </div>
