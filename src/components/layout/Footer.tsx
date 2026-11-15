@@ -14,10 +14,10 @@ export function Footer() {
     <footer className="py-8 border-t border-white/5 bg-main">
       <div className="max-w-5xl mx-auto px-5 md:px-8 flex flex-col md:flex-row justify-between items-center gap-5">
         <div>
-          <a href="#" className="text-sm font-bold font-display text-white">
+          <a href="#" className="text-sm font-bold font-display text-white" aria-label={t.a11y.home}>
             {profile.name.brand}
           </a>
-          <p className="mt-1 text-xs text-gray-500">
+          <p className="mt-1 text-xs text-gray-400">
             © {new Date().getFullYear()} {profile.name.short}. {t.footer.rights}
           </p>
         </div>
@@ -30,7 +30,7 @@ export function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={link.label}
-              className="text-gray-500 hover:text-white transition-colors"
+              className="text-gray-400 hover:text-white transition-colors"
             >
               {link.icon}
             </a>

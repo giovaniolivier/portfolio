@@ -1,90 +1,63 @@
+import { useState } from 'react';
 import { ArrowLeft, Languages, Download } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import { profile } from '../constants/profile';
 import { EXPERIENCES, PROJECTS, SKILLS } from '../constants/data';
-import type { Experience as ExperienceItem } from '../types';
+import { localize } from '../lib/localize';
+import type { Language, Project, SkillCategory } from '../types';
 
-/** Projets perso (hors expériences pro déjà listées) */
-const CV_PERSONAL_PROJECT_IDS = ['1', '9'] as const;
+/** Projets perso du CV, dans l'ordre d'affichage (ids de PROJECTS). */
+const CV_PROJECT_IDS = ['taskmaster', 'jobradar'];
 
 function goHome() {
   window.history.pushState({}, '', '/');
   window.dispatchEvent(new PopStateEvent('popstate'));
 }
 
-function downloadCvPdf(language: 'fr' | 'en') {
+/** Télécharge le PDF pré-généré (npm run generate:cv). Renvoie false s'il est introuvable. */
+async function downloadCvPdf(language: Language): Promise<boolean> {
   const href = language === 'en' ? '/cv-en.pdf' : '/cv-fr.pdf';
   const filename = language === 'en' ? 'CV-Olivier-Lovasoa-EN.pdf' : 'CV-Olivier-Lovasoa-FR.pdf';
-
-  void (async () => {
-    try {
-      const res = await fetch(href, { cache: 'no-store' });
-      if (!res.ok) throw new Error(`PDF unavailable (${res.status})`);
-      const blob = await res.blob();
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = url;
-      link.download = filename;
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
-      URL.revokeObjectURL(url);
-    } catch (err) {
-      console.error(err);
-      window.alert(
-        language === 'en'
-          ? 'PDF not found. Run npm run generate:cv then retry.'
-          : 'PDF introuvable. Lancez npm run generate:cv puis réessayez.',
-      );
-    }
-  })();
+  try {
+    const res = await fetch(href, { cache: 'no-store' });
+    if (!res.ok) throw new Error(`PDF unavailable (${res.status})`);
+    const url = URL.createObjectURL(await res.blob());
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(url);
+    return true;
+  } catch (err) {
+    console.error(err);
+    return false;
+  }
 }
 
 export function CVPage() {
   const { t, language, setLanguage } = useApp();
+  const [pdfMissing, setPdfMissing] = useState(false);
   const role = profile.role[language];
 
-  const experiences: ExperienceItem[] = EXPERIENCES.filter(
-    (e) => !/^Stage\b/i.test(e.role) && !/^Internship\b/i.test(e.role),
-  ).map((e) => {
-    const localized = t.experience.items.find((item: { id: string }) => item.id === e.id);
-    return {
-      id: e.id,
-      role: localized?.role ?? e.role,
-      company: localized?.company ?? e.company,
-      period: localized?.period ?? e.period,
-      description: localized?.description ?? e.description,
-      technologies: e.technologies,
-    };
-  });
+  const experiences = EXPERIENCES.filter((e) => !e.internship);
+  const personalProjects = CV_PROJECT_IDS.map((id) => PROJECTS.find((p) => p.id === id)).filter(
+    (p): p is Project => Boolean(p),
+  );
 
-  const personalProjects = CV_PERSONAL_PROJECT_IDS.map((id) => {
-    const base = PROJECTS.find((p) => p.id === id);
-    if (!base) return null;
-    const localized = t.projects.items.find((item: { id: string }) => item.id === id);
-    return {
-      id: base.id,
-      title: localized?.title ?? base.title,
-      description: localized?.description ?? base.description,
-      technologies: base.technologies,
-      liveUrl: base.liveUrl,
-      githubUrl: base.githubUrl,
-    };
-  }).filter(Boolean) as Array<{
-    id: string;
-    title: string;
-    description: string;
-    technologies: string[];
-    liveUrl?: string;
-    githubUrl?: string;
-  }>;
-
-  const skillGroups = [
-    { key: 'Frontend' as const, label: t.skills.categories.frontend },
-    { key: 'Backend' as const, label: t.skills.categories.backend },
-    { key: 'Database' as const, label: t.skills.categories.database },
-    { key: 'Tools' as const, label: t.skills.categories.tools },
+  const skillGroups: { key: SkillCategory; label: string }[] = [
+    { key: 'Frontend', label: t.skills.categories.frontend },
+    { key: 'Backend', label: t.skills.categories.backend },
+    { key: 'Database', label: t.skills.categories.database },
+    { key: 'Tools', label: t.skills.categories.tools },
   ];
+
+  async function handleDownload() {
+    setPdfMissing(false);
+    const ok = await downloadCvPdf(language);
+    if (!ok) setPdfMissing(true);
+  }
 
   return (
     <div className="cv-page">
@@ -98,21 +71,22 @@ export function CVPage() {
             type="button"
             onClick={() => setLanguage(language === 'fr' ? 'en' : 'fr')}
             className="cv-toolbar-btn"
-            aria-label="Change language"
+            aria-label={t.a11y.switchLanguage}
           >
             <Languages size={14} aria-hidden="true" />
             {language.toUpperCase()}
           </button>
-          <button
-            type="button"
-            onClick={() => downloadCvPdf(language)}
-            className="cv-toolbar-btn cv-toolbar-btn-primary"
-          >
+          <button type="button" onClick={handleDownload} className="cv-toolbar-btn cv-toolbar-btn-primary">
             <Download size={14} aria-hidden="true" />
             {t.cv.print}
           </button>
         </div>
       </div>
+      {pdfMissing && (
+        <p role="alert" className="cv-toolbar print:hidden text-xs">
+          {t.cv.pdfMissing}
+        </p>
+      )}
 
       <article className="cv-sheet">
         <header className="cv-header">
@@ -152,12 +126,12 @@ export function CVPage() {
               <li key={exp.id} className="cv-item">
                 <div className="cv-item-head">
                   <div>
-                    <h3 className="cv-item-title">{exp.role}</h3>
-                    <p className="cv-item-meta">{exp.company}</p>
+                    <h3 className="cv-item-title">{localize(exp.role, language)}</h3>
+                    <p className="cv-item-meta">{localize(exp.company, language)}</p>
                   </div>
                   <time className="cv-item-period">{exp.period}</time>
                 </div>
-                <p className="cv-text">{exp.description}</p>
+                <p className="cv-text">{localize(exp.description, language)}</p>
                 {exp.technologies.length > 0 && (
                   <p className="cv-tech">{exp.technologies.join(' · ')}</p>
                 )}
@@ -171,8 +145,8 @@ export function CVPage() {
           <ul className="cv-list">
             {personalProjects.map((project) => (
               <li key={project.id} className="cv-item">
-                <h3 className="cv-item-title">{project.title}</h3>
-                <p className="cv-text">{project.description}</p>
+                <h3 className="cv-item-title">{localize(project.title, language)}</h3>
+                <p className="cv-text">{localize(project.description, language)}</p>
                 <p className="cv-tech">{project.technologies.join(' · ')}</p>
               </li>
             ))}

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { MotionConfig } from 'motion/react';
 import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
 import { Hero } from './components/sections/Hero';
@@ -7,7 +8,7 @@ import { Skills } from './components/sections/Skills';
 import { Projects } from './components/sections/Projects';
 import { Experience } from './components/sections/Experience';
 import { Contact } from './components/sections/Contact';
-import { AppProvider } from './context/AppContext';
+import { AppProvider, useApp } from './context/AppContext';
 import { CVPage } from './pages/CVPage';
 
 function usePathname() {
@@ -23,10 +24,15 @@ function usePathname() {
 }
 
 function Portfolio() {
+  const { t } = useApp();
+
   return (
     <div className="min-h-screen bg-main selection:bg-accent/30 selection:text-accent group/app">
+      <a href="#main" className="skip-link">
+        {t.a11y.skipToContent}
+      </a>
       <Navbar />
-      <main className="relative">
+      <main id="main" tabIndex={-1} className="relative outline-none">
         <Hero />
         <About />
         <Skills />
@@ -36,7 +42,7 @@ function Portfolio() {
       </main>
       <Footer />
 
-      <div className="fixed inset-0 -z-50 pointer-events-none">
+      <div className="fixed inset-0 -z-50 pointer-events-none" aria-hidden="true">
         <div className="absolute inset-0 noise-bg opacity-[0.03]" />
         <div className="grid-bg" />
         <div className="absolute top-0 right-0 w-200 h-200 bg-accent/20 rounded-full blur-[150px] ambient-orb-a" />
@@ -58,7 +64,10 @@ function AppContent() {
 export default function App() {
   return (
     <AppProvider>
-      <AppContent />
+      {/* Respecte « réduire les animations » du système : pas de déplacements, fondus conservés. */}
+      <MotionConfig reducedMotion="user">
+        <AppContent />
+      </MotionConfig>
     </AppProvider>
   );
 }

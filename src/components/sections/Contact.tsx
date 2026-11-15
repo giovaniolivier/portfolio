@@ -15,8 +15,8 @@ const CONTACT_ENDPOINT = import.meta.env.VITE_CONTACT_ENDPOINT?.trim() || '';
 type Status = 'idle' | 'sending' | 'success' | 'mailto' | 'error' | 'invalid';
 
 const inputClass =
-  'w-full bg-transparent border-b border-white/10 py-2.5 text-sm text-white placeholder:text-white/10 focus:outline-none focus:border-accent transition-colors font-light';
-const labelClass = 'text-[9px] font-black uppercase tracking-[0.25em] text-white/30 ml-0.5';
+  'w-full bg-transparent border-b border-white/10 py-2.5 text-sm text-white placeholder:text-white/40 focus:outline-none focus:border-accent transition-colors font-light';
+const labelClass = 'text-[10px] font-black uppercase tracking-[0.25em] text-white/60 ml-0.5';
 
 function openMailto(subject: string, body: string) {
   const query = `subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
@@ -85,9 +85,9 @@ export function Contact() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
         <div className="p-5 rounded-2xl bg-white/5 border border-white/12 hover:border-accent/30 transition-colors group">
           <div className="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center text-accent mb-4 group-hover:scale-110 transition-transform">
-            <Mail size={16} />
+            <Mail size={16} aria-hidden="true" />
           </div>
-          <div className="text-[9px] uppercase font-black tracking-widest text-white/40 mb-1">
+          <div className="text-[10px] uppercase font-black tracking-widest text-white/60 mb-1">
             {t.contact.direct}
           </div>
           <a
@@ -100,9 +100,9 @@ export function Contact() {
 
         <div className="p-5 rounded-2xl bg-white/5 border border-white/12 hover:border-accent/30 transition-colors group">
           <div className="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center text-accent mb-4 group-hover:scale-110 transition-transform">
-            <MessageSquare size={16} />
+            <MessageSquare size={16} aria-hidden="true" />
           </div>
-          <div className="text-[9px] uppercase font-black tracking-widest text-white/40 mb-1">
+          <div className="text-[10px] uppercase font-black tracking-widest text-white/60 mb-1">
             {t.contact.social}
           </div>
           <div className="flex gap-3 text-sm font-medium text-white">
@@ -110,15 +110,17 @@ export function Contact() {
               href={profile.links.linkedin}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="LinkedIn"
               className="hover:text-accent transition-colors"
             >
               LI
             </a>
-            <span className="text-white/20">/</span>
+            <span className="text-white/20" aria-hidden="true">/</span>
             <a
               href={profile.links.github}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="GitHub"
               className="hover:text-accent transition-colors"
             >
               GH
@@ -128,9 +130,9 @@ export function Contact() {
 
         <div className="p-5 rounded-2xl bg-white/5 border border-white/12 hover:border-accent/30 transition-colors group">
           <div className="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center text-accent mb-4 group-hover:scale-110 transition-transform">
-            <Send size={16} />
+            <Send size={16} aria-hidden="true" />
           </div>
-          <div className="text-[9px] uppercase font-black tracking-widest text-white/40 mb-1">
+          <div className="text-[10px] uppercase font-black tracking-widest text-white/60 mb-1">
             {t.contact.location}
           </div>
           <div className="text-sm font-medium text-white">{profile.location.label}</div>
@@ -216,6 +218,7 @@ export function Contact() {
             {sending ? t.contact.form.sending : t.contact.form.submit}
             <Send
               size={12}
+              aria-hidden="true"
               className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
             />
           </button>

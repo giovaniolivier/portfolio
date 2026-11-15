@@ -1,28 +1,31 @@
-import { motion, useScroll, useTransform } from 'motion/react';
+import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react';
 import { ArrowRight, Mail } from 'lucide-react';
-import { useRef } from 'react';
 import { useApp } from '../../context/AppContext';
 import { profile } from '../../constants/profile';
 
 export function Hero() {
-  const containerRef = useRef<HTMLDivElement>(null);
   const { scrollY } = useScroll();
   const { t } = useApp();
+  const reduceMotion = useReducedMotion();
   const y = useTransform(scrollY, [0, 500], [0, 120]);
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
   const scale = useTransform(scrollY, [0, 300], [1, 0.95]);
 
+  const metrics = [
+    { value: t.hero.metrics.senior, label: t.hero.metrics.expertise },
+    { value: `${profile.stats.years} ${t.hero.metrics.yearsUnit}`, label: t.hero.metrics.experience },
+    { value: profile.stats.projects, label: t.hero.metrics.projectsLabel },
+    { value: t.hero.metrics.available, label: t.hero.metrics.availability },
+  ];
+
   return (
-    <section
-      ref={containerRef}
-      className="min-h-screen relative flex items-center justify-center pt-16 overflow-hidden bg-main"
-    >
-      <div className="absolute inset-0 overflow-hidden">
+    <section className="min-h-screen relative flex items-center justify-center pt-16 overflow-hidden bg-main">
+      <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-screen aspect-square hero-glow blur-[100px]" />
       </div>
 
       <motion.div
-        style={{ y, opacity, scale }}
+        style={reduceMotion ? undefined : { y, opacity, scale }}
         className="max-w-3xl mx-auto px-5 text-center z-10"
       >
         <motion.div
@@ -43,58 +46,48 @@ export function Hero() {
           </p>
 
           <div className="flex flex-wrap justify-center gap-3 mb-12">
-            <motion.a href="#projects" className="btn-primary flex items-center gap-2">
+            <a href="#projects" className="btn-primary flex items-center gap-2">
               {t.hero.ctaProjects}
-              <ArrowRight size={14} />
-            </motion.a>
-            <motion.a href="#contact" className="btn-secondary flex items-center gap-2">
-              <Mail size={14} />
+              <ArrowRight size={14} aria-hidden="true" />
+            </a>
+            <a href="#contact" className="btn-secondary flex items-center gap-2">
+              <Mail size={14} aria-hidden="true" />
               {t.hero.ctaContact}
-            </motion.a>
+            </a>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 py-5 border-y border-white/10">
-            <div className="text-center">
-              <div className="text-base font-display font-bold text-white mb-0.5">{t.hero.metrics.senior}</div>
-              <div className="text-[8px] uppercase tracking-widest font-mono text-gray-400">{t.hero.metrics.expertise}</div>
-            </div>
-            <div className="text-center">
-              <div className="text-base font-display font-bold text-white mb-0.5">{profile.stats.years} {t.hero.metrics.yearsUnit}</div>
-              <div className="text-[8px] uppercase tracking-widest font-mono text-gray-400">{t.hero.metrics.experience}</div>
-            </div>
-            <div className="text-center">
-              <div className="text-base font-display font-bold text-white mb-0.5">{profile.stats.projects}</div>
-              <div className="text-[8px] uppercase tracking-widest font-mono text-gray-400">{t.hero.metrics.projectsLabel}</div>
-            </div>
-            <div className="text-center">
-              <div className="text-base font-display font-bold text-white mb-0.5">{t.hero.metrics.available}</div>
-              <div className="text-[8px] uppercase tracking-widest font-mono text-gray-400">{t.hero.metrics.availability}</div>
-            </div>
-          </div>
+          <dl className="grid grid-cols-2 md:grid-cols-4 gap-4 py-5 border-y border-white/10">
+            {metrics.map((m) => (
+              <div key={m.label} className="text-center flex flex-col-reverse">
+                <dt className="text-[10px] uppercase tracking-widest font-mono text-gray-400">{m.label}</dt>
+                <dd className="text-base font-display font-bold text-white mb-0.5">{m.value}</dd>
+              </div>
+            ))}
+          </dl>
 
           <a
             href={profile.links.cv}
-            className="inline-block mt-6 text-[10px] uppercase tracking-widest text-white/45 hover:text-accent transition-colors"
+            className="inline-block mt-6 text-[10px] uppercase tracking-widest text-white/60 hover:text-accent transition-colors"
           >
-            {t.hero.ctaResume} →
+            {t.hero.ctaResume} <span aria-hidden="true">→</span>
           </a>
         </motion.div>
       </motion.div>
 
-      <div className="absolute bottom-8 left-8 hidden lg:block">
-        <div className="flex items-center gap-3 text-[9px] font-mono uppercase tracking-[0.3em] text-white/35">
+      <div className="absolute bottom-8 left-8 hidden lg:block" aria-hidden="true">
+        <div className="flex items-center gap-3 text-[10px] font-mono uppercase tracking-[0.3em] text-white/55">
           <div className="w-6 h-px bg-white/35" />
           {t.common.scroll}
         </div>
       </div>
 
-      <div className="absolute bottom-8 right-8 hidden lg:block">
-        <div className="text-[9px] font-mono tracking-widest text-white/45">
+      <div className="absolute bottom-8 right-8 hidden lg:block" aria-hidden="true">
+        <div className="text-[10px] font-mono tracking-widest text-white/55">
           [ {profile.location.coords} ]
         </div>
       </div>
 
-      <div className="noise-bg absolute inset-0 mix-blend-soft-light opacity-50" />
+      <div className="noise-bg absolute inset-0 mix-blend-soft-light opacity-50" aria-hidden="true" />
     </section>
   );
 }
