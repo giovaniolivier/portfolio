@@ -1,6 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 @import "tailwindcss";
 
+/*
+ * Thèmes : toutes les différences entre sombre et clair sont ici, sous forme
+ * de variables. Les composants n'utilisent que les couleurs sémantiques
+ * déclarées dans @theme (text-fg, bg-tint-3, border-line…), jamais white/black.
+ */
 :root {
   color-scheme: dark;
   /* Éclairci de #8b5cf6 pour un contraste ≥ 4.5:1 (WCAG AA) en petit texte sur fond sombre. */
@@ -18,13 +22,41 @@
   --noise-opacity: 0.03;
   --orb-a: 0.2;
   --orb-b: 0.1;
-  --shadow-card: 0 18px 40px rgba(0, 0, 0, 0.35);
-  --input-placeholder: rgba(255, 255, 255, 0.18);
+  --card-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+  --input-placeholder: rgba(255, 255, 255, 0.4);
   --overlay: rgba(0, 0, 0, 0.6);
   --btn-primary-bg: #ffffff;
   --btn-primary-fg: #000000;
   --btn-primary-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
   --scrollbar: rgba(255, 255, 255, 0.12);
+
+  /* Texte, du plus fort au plus discret. */
+  --fg: #ffffff;
+  --fg-muted: rgb(255 255 255 / 0.7);
+  --fg-subtle: rgb(255 255 255 / 0.6);
+  --fg-dim: rgb(255 255 255 / 0.5);
+  --fg-faint: rgb(255 255 255 / 0.15); /* décoratif uniquement */
+  --body: oklch(87.2% 0.01 258.338); /* paragraphes */
+  --body-muted: oklch(70.7% 0.022 261.325);
+  --danger: oklch(70.4% 0.191 22.216);
+
+  /* Fonds teintés (cartes, pastilles), du plus léger au plus marqué. */
+  --tint-1: rgb(255 255 255 / 0.02);
+  --tint-2: rgb(255 255 255 / 0.03);
+  --tint-3: rgb(255 255 255 / 0.05);
+  --tint-4: rgb(255 255 255 / 0.1);
+
+  /* Bordures et séparateurs. */
+  --line-soft: rgb(255 255 255 / 0.05);
+  --line: rgb(255 255 255 / 0.1);
+  --line-strong: rgb(255 255 255 / 0.15);
+
+  --veil: rgb(0 0 0 / 0.2); /* voile sur les captures de projets */
+  --label-fg: var(--accent);
+  --panel-bg: color-mix(in srgb, var(--elevated) 92%, transparent);
+  --panel-border: var(--border-soft);
+  --gradient-stop: 15%;
+  --gradient-end: color-mix(in srgb, var(--page-fg) 45%, transparent);
 }
 
 html.light {
@@ -43,13 +75,39 @@ html.light {
   --noise-opacity: 0.04;
   --orb-a: 0.28;
   --orb-b: 0.16;
-  --shadow-card: 0 12px 32px rgba(17, 24, 39, 0.08);
+  --card-shadow: 0 12px 32px rgba(17, 24, 39, 0.08);
   --input-placeholder: rgba(17, 24, 39, 0.5);
   --overlay: rgba(17, 24, 39, 0.35);
   --btn-primary-bg: #111827;
   --btn-primary-fg: #ffffff;
   --btn-primary-shadow: 0 10px 28px rgba(17, 24, 39, 0.16);
   --scrollbar: rgba(17, 24, 39, 0.18);
+
+  /* Paliers relevés pour rester lisibles (WCAG) sur fond clair. */
+  --fg: #111827;
+  --fg-muted: color-mix(in srgb, #111827 88%, transparent);
+  --fg-subtle: color-mix(in srgb, #111827 82%, transparent);
+  --fg-dim: color-mix(in srgb, #111827 78%, transparent);
+  --fg-faint: color-mix(in srgb, #111827 50%, transparent);
+  --body: #374151;
+  --body-muted: #4b5563;
+  --danger: #b91c1c;
+
+  --tint-1: color-mix(in srgb, #111827 3%, transparent);
+  --tint-2: color-mix(in srgb, #111827 5%, transparent);
+  --tint-3: color-mix(in srgb, #111827 6%, transparent);
+  --tint-4: color-mix(in srgb, #111827 5%, transparent);
+
+  --line-soft: var(--border-soft);
+  --line: var(--border);
+  --line-strong: rgba(17, 24, 39, 0.2);
+
+  --veil: rgba(17, 24, 39, 0.08);
+  --label-fg: #5b21b6;
+  --panel-bg: var(--surface);
+  --panel-border: var(--border);
+  --gradient-stop: 20%;
+  --gradient-end: color-mix(in srgb, var(--page-fg) 72%, transparent);
 }
 
 @theme {
@@ -59,12 +117,29 @@ html.light {
 
   --color-accent: var(--accent);
   --color-accent-hover: var(--accent-hover);
-  --color-bg-dark: #000000;
-  --color-card-dark: #0a0a0a;
-  --color-bg-light: #f2f3f7;
-  --color-card-light: #ffffff;
-  --color-text-light: #111827;
-  --color-text-muted-light: #4b5563;
+  --color-surface: var(--surface);
+
+  --color-fg: var(--fg);
+  --color-fg-muted: var(--fg-muted);
+  --color-fg-subtle: var(--fg-subtle);
+  --color-fg-dim: var(--fg-dim);
+  --color-fg-faint: var(--fg-faint);
+  --color-body: var(--body);
+  --color-body-muted: var(--body-muted);
+  --color-danger: var(--danger);
+  --color-placeholder: var(--input-placeholder);
+
+  --color-tint-1: var(--tint-1);
+  --color-tint-2: var(--tint-2);
+  --color-tint-3: var(--tint-3);
+  --color-tint-4: var(--tint-4);
+
+  --color-line-soft: var(--line-soft);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-veil: var(--veil);
+
+  --shadow-card: var(--card-shadow);
 }
 
 @layer base {
@@ -138,38 +213,15 @@ html.light {
   }
 
   .glass-panel {
-    background: color-mix(in srgb, var(--elevated) 92%, transparent);
-    border: 1px solid var(--border-soft);
-    box-shadow: var(--shadow-card);
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-border);
+    box-shadow: var(--card-shadow);
     @apply backdrop-blur-xl transition-all duration-500;
   }
 
-  html.light .glass-panel {
-    background: var(--surface);
-    border-color: var(--border);
-  }
-
-  .dark-card,
-  .bg-card-dark {
-    background-color: var(--surface) !important;
-    box-shadow: var(--shadow-card);
-  }
-
   .text-gradient {
-    background-image: linear-gradient(
-      180deg,
-      var(--page-fg) 15%,
-      color-mix(in srgb, var(--page-fg) 45%, transparent)
-    );
+    background-image: linear-gradient(180deg, var(--page-fg) var(--gradient-stop), var(--gradient-end));
     @apply bg-clip-text text-transparent transition-all duration-500;
-  }
-
-  html.light .text-gradient {
-    background-image: linear-gradient(
-      180deg,
-      var(--page-fg) 20%,
-      color-mix(in srgb, var(--page-fg) 72%, transparent)
-    );
   }
 
   .btn-primary {
@@ -196,12 +248,8 @@ html.light {
   .section-label {
     background: color-mix(in srgb, var(--page-fg) 5%, transparent);
     border: 1px solid var(--border);
-    color: var(--accent);
-    @apply inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full text-[9px] uppercase font-bold tracking-[0.2em] mb-4;
-  }
-
-  html.light .section-label {
-    color: #5b21b6;
+    color: var(--label-fg);
+    @apply inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full text-[10px] uppercase font-bold tracking-[0.2em] mb-4;
   }
 
   .hero-glow {
@@ -233,93 +281,6 @@ html.light {
     @apply flex items-center justify-center w-8 h-8 rounded-full font-black text-sm;
     background: var(--btn-primary-bg);
     color: var(--btn-primary-fg);
-  }
-
-  /* Map dark-first utilities → light tokens */
-  html.light .bg-white\/2 {
-    background-color: color-mix(in srgb, var(--page-fg) 3%, transparent) !important;
-  }
-
-  html.light .bg-white\/3,
-  html.light .bg-white\/5,
-  html.light .hover\:bg-white\/5:hover,
-  html.light .hover\:bg-white\/10:hover {
-    background-color: color-mix(in srgb, var(--page-fg) 5%, transparent) !important;
-  }
-
-  html.light .bg-white\/5 {
-    background-color: color-mix(in srgb, var(--page-fg) 6%, transparent) !important;
-  }
-
-  html.light .border-white\/5,
-  html.light .border-white\/8,
-  html.light .border-white\/10,
-  html.light .hover\:border-white\/15:hover,
-  html.light .hover\:border-white\/20:hover {
-    border-color: var(--border) !important;
-  }
-
-  html.light .border-white\/5 {
-    border-color: var(--border-soft) !important;
-  }
-
-  html.light .text-white {
-    color: var(--page-fg) !important;
-  }
-
-  /* Raised floors so muted white/* text stays WCAG-readable on lavender/white */
-  html.light .text-white\/5 { color: color-mix(in srgb, var(--page-fg) 35%, transparent) !important; }
-  html.light .text-white\/10 { color: color-mix(in srgb, var(--page-fg) 42%, transparent) !important; }
-  html.light .text-white\/15 { color: color-mix(in srgb, var(--page-fg) 50%, transparent) !important; }
-  html.light .text-white\/20 { color: color-mix(in srgb, var(--page-fg) 58%, transparent) !important; }
-  html.light .text-white\/30 { color: color-mix(in srgb, var(--page-fg) 68%, transparent) !important; }
-  html.light .text-white\/35 { color: color-mix(in srgb, var(--page-fg) 70%, transparent) !important; }
-  html.light .text-white\/40 { color: color-mix(in srgb, var(--page-fg) 72%, transparent) !important; }
-  html.light .text-white\/45 { color: color-mix(in srgb, var(--page-fg) 75%, transparent) !important; }
-  html.light .text-white\/50 { color: color-mix(in srgb, var(--page-fg) 78%, transparent) !important; }
-  html.light .text-white\/55 { color: color-mix(in srgb, var(--page-fg) 80%, transparent) !important; }
-  html.light .text-white\/60 { color: color-mix(in srgb, var(--page-fg) 82%, transparent) !important; }
-  html.light .text-white\/70 { color: color-mix(in srgb, var(--page-fg) 88%, transparent) !important; }
-  html.light .text-white\/75 { color: color-mix(in srgb, var(--page-fg) 90%, transparent) !important; }
-
-  html.light .hover\:text-white:hover,
-  html.light .group:hover .group-hover\:text-white,
-  html.light .group\/item:hover .group-hover\/item\:text-white {
-    color: var(--page-fg) !important;
-  }
-
-  html.light .group:hover .group-hover\:text-accent\/60 {
-    color: color-mix(in srgb, var(--accent) 85%, transparent) !important;
-  }
-
-  html.light .text-gray-300 {
-    color: #374151 !important;
-  }
-
-  html.light .text-gray-400 {
-    color: #4b5563 !important;
-  }
-
-  html.light .text-gray-500 {
-    color: #4b5563 !important;
-  }
-
-  html.light input,
-  html.light textarea {
-    color: var(--page-fg) !important;
-  }
-
-  html.light input::placeholder,
-  html.light textarea::placeholder {
-    color: var(--input-placeholder) !important;
-  }
-
-  html.light .bg-black\/20 {
-    background-color: rgba(17, 24, 39, 0.08) !important;
-  }
-
-  html.light .shadow-xl {
-    box-shadow: var(--shadow-card) !important;
   }
 }
 

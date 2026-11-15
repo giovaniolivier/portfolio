@@ -1,6 +1,5 @@
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
-import path from 'path';
 import { defineConfig, loadEnv, type HtmlTagDescriptor, type Plugin } from 'vite';
 
 /** Pages publiques, pour le sitemap. */
@@ -58,10 +57,5 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [react(), tailwindcss(), siteMeta(siteUrl)],
-    resolve: {
-      alias: {
-        '@': path.resolve(__dirname, '.'),
-      },
-    },
   };
 });

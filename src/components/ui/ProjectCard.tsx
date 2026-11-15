@@ -11,7 +11,7 @@ interface ProjectCardProps {
 }
 
 const iconLinkClass =
-  'p-1.5 rounded-full bg-white/5 hover:bg-white/10 text-white/60 hover:text-white transition-all';
+  'p-1.5 rounded-full bg-tint-3 hover:bg-tint-4 text-fg-subtle hover:text-fg transition-all';
 
 export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
   const { t, language } = useApp();
@@ -26,7 +26,7 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.08 }}
-      className="group relative flex flex-col w-full bg-card-dark rounded-2xl overflow-hidden border border-white/5 hover:border-white/15 transition-all duration-500 shadow-xl dark-card"
+      className="group relative flex flex-col w-full bg-surface rounded-2xl overflow-hidden border border-line-soft hover:border-line-strong transition-all duration-500 shadow-card"
     >
       <div
         className="absolute inset-0 bg-linear-to-br from-accent/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
@@ -41,12 +41,12 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
           decoding="async"
           className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
         />
-        <div className="absolute inset-0 bg-black/20" aria-hidden="true" />
+        <div className="absolute inset-0 bg-veil" aria-hidden="true" />
       </div>
 
       <div className="p-5 flex flex-col grow">
         <div className="flex justify-between items-start mb-2 gap-2">
-          <h3 className="text-base font-bold font-display text-white group-hover:text-accent transition-colors">
+          <h3 className="text-base font-bold font-display text-fg group-hover:text-accent transition-colors">
             {title}
           </h3>
           <div className="flex gap-1.5 shrink-0">
@@ -89,14 +89,14 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
           </div>
         </div>
 
-        <p className="text-gray-400 font-light leading-relaxed text-xs mb-3 grow">{description}</p>
+        <p className="text-body-muted font-light leading-relaxed text-xs mb-3 grow">{description}</p>
 
         {outcome && (
-          <div className="mb-3 p-3 rounded-lg bg-white/3 border border-white/5">
+          <div className="mb-3 p-3 rounded-lg bg-tint-2 border border-line-soft">
             <div className="text-[10px] uppercase font-bold tracking-widest text-accent mb-0.5">
               {t.projects.impact}
             </div>
-            <p className="text-xs text-gray-300 font-light italic">"{outcome}"</p>
+            <p className="text-xs text-body font-light italic">"{outcome}"</p>
           </div>
         )}
 
@@ -104,7 +104,7 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
           {project.technologies.map((tech) => (
             <li
               key={tech}
-              className="px-2 py-0.5 text-[10px] uppercase tracking-widest font-black bg-white/3 text-white/60 border border-white/5 rounded group-hover:border-accent/20 group-hover:text-accent transition-all duration-500"
+              className="px-2 py-0.5 text-[10px] uppercase tracking-widest font-black bg-tint-2 text-fg-subtle border border-line-soft rounded group-hover:border-accent/20 group-hover:text-accent transition-all duration-500"
             >
               {tech}
             </li>

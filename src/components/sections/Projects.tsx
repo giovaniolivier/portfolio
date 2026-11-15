@@ -8,14 +8,14 @@ export function Projects() {
   const { t } = useApp();
 
   return (
-    <SectionWrapper id="projects" className="bg-white/2">
+    <SectionWrapper id="projects" className="bg-tint-1">
       <div className="text-center mb-10">
         <span className="section-label">{t.projects.label}</span>
-        <h2 className="text-3xl md:text-5xl font-bold font-display text-white tracking-tight mb-3 uppercase">
+        <h2 className="text-3xl md:text-5xl font-bold font-display text-fg tracking-tight mb-3 uppercase">
           {t.projects.title1}{' '}
-          <span className="text-white/50 italic font-light">{t.projects.title2}</span>
+          <span className="text-fg-dim italic font-light">{t.projects.title2}</span>
         </h2>
-        <p className="max-w-lg mx-auto text-gray-300 text-sm font-light">{t.projects.description}</p>
+        <p className="max-w-lg mx-auto text-body text-sm font-light">{t.projects.description}</p>
       </div>
 
       <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">

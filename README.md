@@ -21,8 +21,16 @@ npm run dev        # http://localhost:3000
 | `npm run build` | Build de production dans `dist/` |
 | `npm start` | Sert `dist/` avec Express (en-têtes de sécurité, cache, routes `/` et `/cv`) |
 | `npm run generate:cv` | Build, puis génère `public/cv-fr.pdf` et `public/cv-en.pdf` avec Puppeteer |
-| `npm run lint` | Vérification TypeScript |
+| `npm run typecheck` | Vérification TypeScript (mode strict) |
+| `npm run lint` | ESLint, zéro avertissement toléré |
+| `npm run check` | Typecheck + lint + build : à lancer avant de pousser |
 | `npm run clean` | Supprime `dist/` |
+
+La CI GitHub Actions (`.github/workflows/ci.yml`) lance `typecheck`, `lint`, `build` et un test du serveur à chaque push sur `main` et sur les pull requests, puis génère les CV PDF (téléchargeables dans les artefacts du run).
+
+## Thème et couleurs
+
+Les composants n'utilisent que des couleurs sémantiques (`text-fg`, `text-body`, `bg-tint-3`, `border-line`…). Leurs valeurs pour les thèmes sombre et clair sont définies dans `src/index.css`, dans `:root` et `html.light`. Pour ajuster une couleur, on modifie la variable, pas les composants.
 
 ## Modifier le contenu
 

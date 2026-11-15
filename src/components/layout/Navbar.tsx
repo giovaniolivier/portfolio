@@ -82,7 +82,7 @@ export function Navbar() {
           aria-label={t.a11y.menu}
           className={`flex items-center gap-1.5 p-1.5 rounded-full transition-all duration-500 active:scale-95 ${
             scrolled
-              ? 'bg-white/5 backdrop-blur-xl border border-white/10 pr-1.5 shadow-xl'
+              ? 'bg-tint-3 backdrop-blur-xl border border-line pr-1.5 shadow-card'
               : 'bg-transparent border-transparent'
           }`}
         >
@@ -95,7 +95,7 @@ export function Navbar() {
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className="block px-2.5 py-1.5 text-[10px] uppercase tracking-[0.15em] font-bold text-white/60 hover:text-white transition-colors"
+                  className="block px-2.5 py-1.5 text-[10px] uppercase tracking-[0.15em] font-bold text-fg-subtle hover:text-fg transition-colors"
                 >
                   {link.name}
                 </a>
@@ -110,7 +110,7 @@ export function Navbar() {
             onClick={toggleTheme}
             aria-label={themeLabel}
             title={themeLabel}
-            className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/60 hover:text-white transition-all cursor-pointer"
+            className="w-8 h-8 rounded-full bg-tint-3 border border-line flex items-center justify-center text-fg-subtle hover:text-fg transition-all cursor-pointer"
           >
             {theme === 'dark' ? <Sun size={14} aria-hidden="true" /> : <Moon size={14} aria-hidden="true" />}
           </button>
@@ -120,7 +120,7 @@ export function Navbar() {
             onClick={switchLanguage}
             aria-label={t.a11y.switchLanguage}
             title={t.a11y.switchLanguage}
-            className="h-8 px-2.5 rounded-full bg-white/5 border border-white/10 flex items-center gap-1.5 text-white/60 hover:text-white transition-all cursor-pointer text-[10px] font-bold uppercase tracking-widest"
+            className="h-8 px-2.5 rounded-full bg-tint-3 border border-line flex items-center gap-1.5 text-fg-subtle hover:text-fg transition-all cursor-pointer text-[10px] font-bold uppercase tracking-widest"
           >
             <Languages size={12} aria-hidden="true" />
             {language}
@@ -130,7 +130,7 @@ export function Navbar() {
             href="#contact"
             whileHover={{ scale: 1.02 }}
             className={`px-4 py-1.5 rounded-full font-bold text-[10px] uppercase tracking-widest transition-all duration-500 ${
-              scrolled ? 'btn-primary py-1.5! px-4!' : 'bg-white/5 border border-white/10 text-white'
+              scrolled ? 'btn-primary py-1.5! px-4!' : 'bg-tint-3 border border-line text-fg'
             }`}
           >
             {t.nav.cta}
@@ -140,7 +140,7 @@ export function Navbar() {
         <button
           ref={menuButtonRef}
           type="button"
-          className="md:hidden w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white"
+          className="md:hidden w-8 h-8 rounded-full bg-tint-3 border border-line flex items-center justify-center text-fg"
           onClick={() => setIsOpen((open) => !open)}
           aria-label={isOpen ? t.a11y.closeMenu : t.a11y.openMenu}
           aria-expanded={isOpen}
@@ -169,7 +169,7 @@ export function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 30, stiffness: 300 }}
-              className="absolute top-0 right-0 h-full w-[75%] bg-main border-l border-white/10 p-8 flex flex-col justify-center gap-5"
+              className="absolute top-0 right-0 h-full w-[75%] bg-main border-l border-line p-8 flex flex-col justify-center gap-5"
               onClick={(e) => e.stopPropagation()}
               onKeyDown={trapFocus}
             >
@@ -181,18 +181,18 @@ export function Navbar() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.08 }}
                   onClick={() => setIsOpen(false)}
-                  className="text-2xl font-bold font-display text-white/60 hover:text-white transition-colors"
+                  className="text-2xl font-bold font-display text-fg-subtle hover:text-fg transition-colors"
                 >
                   {link.name}
                 </motion.a>
               ))}
 
-              <div className="flex items-center gap-3 pt-6 mt-2 border-t border-white/10">
+              <div className="flex items-center gap-3 pt-6 mt-2 border-t border-line">
                 <button
                   type="button"
                   onClick={toggleTheme}
                   aria-label={themeLabel}
-                  className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/70 hover:text-white"
+                  className="w-10 h-10 rounded-full bg-tint-3 border border-line flex items-center justify-center text-fg-muted hover:text-fg"
                 >
                   {theme === 'dark' ? <Sun size={16} aria-hidden="true" /> : <Moon size={16} aria-hidden="true" />}
                 </button>
@@ -200,7 +200,7 @@ export function Navbar() {
                   type="button"
                   onClick={switchLanguage}
                   aria-label={t.a11y.switchLanguage}
-                  className="h-10 px-4 rounded-full bg-white/5 border border-white/10 flex items-center gap-2 text-white/70 hover:text-white text-xs font-bold uppercase tracking-widest"
+                  className="h-10 px-4 rounded-full bg-tint-3 border border-line flex items-center gap-2 text-fg-muted hover:text-fg text-xs font-bold uppercase tracking-widest"
                 >
                   <Languages size={14} aria-hidden="true" />
                   {language}

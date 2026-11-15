@@ -1,0 +1,59 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Typecheck, lint, build
+    runs-on: ubuntu-latest
+    env:
+      # Le build et les tests n'ont pas besoin de Chrome.
+      PUPPETEER_SKIP_DOWNLOAD: 'true'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run lint
+      - run: npm run build
+      - name: Smoke test du serveur de production
+        run: |
+          PORT=4173 node scripts/start.mjs &
+          for i in $(seq 1 20); do curl -fs http://127.0.0.1:4173/ >/dev/null && break; sleep 0.5; done
+          curl -fsS -o /dev/null -w "/ -> %{http_code}\n" http://127.0.0.1:4173/
+          curl -fsS -o /dev/null -w "/cv -> %{http_code}\n" http://127.0.0.1:4173/cv
+          test "$(curl -s -o /dev/null -w '%{http_code}' http://127.0.0.1:4173/page-inexistante)" = "404"
+
+  cv:
+    name: Générer les CV PDF
+    needs: check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run generate:cv
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cv-pdf
+          path: |
+            public/cv-fr.pdf
+            public/cv-en.pdf
+          retention-days: 14

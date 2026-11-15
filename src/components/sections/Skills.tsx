@@ -18,9 +18,9 @@ export function Skills() {
         <span className="section-label">{t.skills.label}</span>
         <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-4 italic uppercase">
           {t.skills.title1} <br />
-          <span className="text-white/50">{t.skills.title2}</span>
+          <span className="text-fg-dim">{t.skills.title2}</span>
         </h2>
-        <p className="max-w-xl text-gray-400 text-sm font-light leading-relaxed">
+        <p className="max-w-xl text-body-muted text-sm font-light leading-relaxed">
           {t.skills.description}
         </p>
       </div>
@@ -37,15 +37,15 @@ export function Skills() {
             <div className="group">
               <div className="flex items-center gap-2 mb-4">
                 <span className="text-[10px] font-mono text-accent" aria-hidden="true">0{idx + 1}</span>
-                <h3 className="text-[10px] font-black uppercase tracking-[0.25em] text-white/60 group-hover:text-white transition-colors">
+                <h3 className="text-[10px] font-black uppercase tracking-[0.25em] text-fg-subtle group-hover:text-fg transition-colors">
                   {cat.label}
                 </h3>
               </div>
               <ul className="space-y-2">
                 {SKILLS.filter((s) => s.category === cat.key).map((skill) => (
                   <li key={skill.name} className="flex items-center gap-2 group/item">
-                    <div className="w-1 h-1 rounded-full bg-white/10 group-hover/item:bg-accent transition-colors" aria-hidden="true" />
-                    <span className="text-sm font-light text-gray-400 group-hover/item:text-white transition-colors">
+                    <div className="w-1 h-1 rounded-full bg-line group-hover/item:bg-accent transition-colors" aria-hidden="true" />
+                    <span className="text-sm font-light text-body-muted group-hover/item:text-fg transition-colors">
                       {skill.name}
                     </span>
                   </li>

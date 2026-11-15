@@ -15,8 +15,8 @@ const CONTACT_ENDPOINT = import.meta.env.VITE_CONTACT_ENDPOINT?.trim() || '';
 type Status = 'idle' | 'sending' | 'success' | 'mailto' | 'error' | 'invalid';
 
 const inputClass =
-  'w-full bg-transparent border-b border-white/10 py-2.5 text-sm text-white placeholder:text-white/40 focus:outline-none focus:border-accent transition-colors font-light';
-const labelClass = 'text-[10px] font-black uppercase tracking-[0.25em] text-white/60 ml-0.5';
+  'w-full bg-transparent border-b border-line py-2.5 text-sm text-fg placeholder:text-placeholder focus:outline-none focus:border-accent transition-colors font-light';
+const labelClass = 'text-[10px] font-black uppercase tracking-[0.25em] text-fg-subtle ml-0.5';
 
 function openMailto(subject: string, body: string) {
   const query = `subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
@@ -70,42 +70,42 @@ export function Contact() {
   const sending = status === 'sending';
 
   return (
-    <SectionWrapper id="contact" className="!pt-24 md:!pt-32 !pb-28 md:!pb-36 border-t border-white/8">
+    <SectionWrapper id="contact" className="!pt-24 md:!pt-32 !pb-28 md:!pb-36 border-t border-line">
       <div className="max-w-2xl mx-auto text-center mb-12">
         <span className="section-label">{t.contact.label}</span>
         <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-4 leading-none uppercase">
           {t.contact.title1}{' '}
-          <span className="text-white/45 italic font-light">{t.contact.title2}</span>
+          <span className="text-fg-dim italic font-light">{t.contact.title2}</span>
         </h2>
-        <p className="text-sm md:text-base text-gray-300 font-light max-w-md mx-auto leading-relaxed">
+        <p className="text-sm md:text-base text-body font-light max-w-md mx-auto leading-relaxed">
           {t.contact.description}
         </p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
-        <div className="p-5 rounded-2xl bg-white/5 border border-white/12 hover:border-accent/30 transition-colors group">
-          <div className="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center text-accent mb-4 group-hover:scale-110 transition-transform">
+        <div className="p-5 rounded-2xl bg-tint-3 border border-line hover:border-accent/30 transition-colors group">
+          <div className="w-9 h-9 rounded-xl bg-tint-3 flex items-center justify-center text-accent mb-4 group-hover:scale-110 transition-transform">
             <Mail size={16} aria-hidden="true" />
           </div>
-          <div className="text-[10px] uppercase font-black tracking-widest text-white/60 mb-1">
+          <div className="text-[10px] uppercase font-black tracking-widest text-fg-subtle mb-1">
             {t.contact.direct}
           </div>
           <a
             href={`mailto:${profile.email}`}
-            className="text-sm font-medium text-white hover:text-accent transition-colors break-all"
+            className="text-sm font-medium text-fg hover:text-accent transition-colors break-all"
           >
             {profile.email}
           </a>
         </div>
 
-        <div className="p-5 rounded-2xl bg-white/5 border border-white/12 hover:border-accent/30 transition-colors group">
-          <div className="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center text-accent mb-4 group-hover:scale-110 transition-transform">
+        <div className="p-5 rounded-2xl bg-tint-3 border border-line hover:border-accent/30 transition-colors group">
+          <div className="w-9 h-9 rounded-xl bg-tint-3 flex items-center justify-center text-accent mb-4 group-hover:scale-110 transition-transform">
             <MessageSquare size={16} aria-hidden="true" />
           </div>
-          <div className="text-[10px] uppercase font-black tracking-widest text-white/60 mb-1">
+          <div className="text-[10px] uppercase font-black tracking-widest text-fg-subtle mb-1">
             {t.contact.social}
           </div>
-          <div className="flex gap-3 text-sm font-medium text-white">
+          <div className="flex gap-3 text-sm font-medium text-fg">
             <a
               href={profile.links.linkedin}
               target="_blank"
@@ -115,7 +115,7 @@ export function Contact() {
             >
               LI
             </a>
-            <span className="text-white/20" aria-hidden="true">/</span>
+            <span className="text-fg-faint" aria-hidden="true">/</span>
             <a
               href={profile.links.github}
               target="_blank"
@@ -128,17 +128,17 @@ export function Contact() {
           </div>
         </div>
 
-        <div className="p-5 rounded-2xl bg-white/5 border border-white/12 hover:border-accent/30 transition-colors group">
-          <div className="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center text-accent mb-4 group-hover:scale-110 transition-transform">
+        <div className="p-5 rounded-2xl bg-tint-3 border border-line hover:border-accent/30 transition-colors group">
+          <div className="w-9 h-9 rounded-xl bg-tint-3 flex items-center justify-center text-accent mb-4 group-hover:scale-110 transition-transform">
             <Send size={16} aria-hidden="true" />
           </div>
-          <div className="text-[10px] uppercase font-black tracking-widest text-white/60 mb-1">
+          <div className="text-[10px] uppercase font-black tracking-widest text-fg-subtle mb-1">
             {t.contact.location}
           </div>
-          <div className="text-sm font-medium text-white">{profile.location.label}</div>
+          <div className="text-sm font-medium text-fg">{profile.location.label}</div>
           <a
             href={`tel:${profile.phone.replace(/\s/g, '')}`}
-            className="text-xs text-gray-400 hover:text-accent transition-colors mt-1 inline-block"
+            className="text-xs text-body-muted hover:text-accent transition-colors mt-1 inline-block"
           >
             {profile.phone}
           </a>
@@ -225,10 +225,10 @@ export function Contact() {
 
           <p role="status" aria-live="polite" className="min-h-5 text-center text-xs font-light">
             {status === 'success' && <span className="text-accent">{t.contact.form.success}</span>}
-            {status === 'mailto' && <span className="text-gray-300">{t.contact.form.mailtoOpened}</span>}
-            {status === 'invalid' && <span className="text-red-400">{t.contact.form.invalid}</span>}
+            {status === 'mailto' && <span className="text-body">{t.contact.form.mailtoOpened}</span>}
+            {status === 'invalid' && <span className="text-danger">{t.contact.form.invalid}</span>}
             {status === 'error' && (
-              <span className="text-red-400">
+              <span className="text-danger">
                 {t.contact.form.error}{' '}
                 <a href={`mailto:${profile.email}`} className="underline hover:text-accent">
                   {profile.email}

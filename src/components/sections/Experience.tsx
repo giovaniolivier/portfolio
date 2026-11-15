@@ -14,16 +14,16 @@ export function Experience() {
           <span className="section-label">{t.experience.label}</span>
           <h2 className="text-3xl md:text-5xl font-bold mb-5 leading-[0.95] tracking-tighter uppercase">
             {t.experience.title1} <br />
-            <span className="text-white/50 italic font-light">{t.experience.title2}</span>
+            <span className="text-fg-dim italic font-light">{t.experience.title2}</span>
           </h2>
-          <div className="p-5 rounded-2xl bg-white/5 border border-white/12 backdrop-blur-xl">
+          <div className="p-5 rounded-2xl bg-tint-3 border border-line backdrop-blur-xl">
             <div className="flex items-center gap-3 mb-2">
               <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" aria-hidden="true" />
-              <h3 className="text-[10px] font-bold uppercase tracking-widest text-white/70">
+              <h3 className="text-[10px] font-bold uppercase tracking-widest text-fg-muted">
                 {t.experience.focus}
               </h3>
             </div>
-            <p className="text-xs font-light leading-relaxed text-gray-300 whitespace-pre-line">
+            <p className="text-xs font-light leading-relaxed text-body whitespace-pre-line">
               {t.experience.focusDesc}
             </p>
           </div>
@@ -41,23 +41,23 @@ export function Experience() {
             >
               <div className="flex items-center justify-between gap-3 mb-3">
                 <div className="flex items-center gap-3 min-w-0">
-                  <span className="text-2xl font-display font-black text-white/15 italic shrink-0" aria-hidden="true">
+                  <span className="text-2xl font-display font-black text-fg-faint italic shrink-0" aria-hidden="true">
                     {String(idx + 1).padStart(2, '0')}
                   </span>
-                  <h3 className="text-lg font-bold text-white group-hover:text-accent transition-colors truncate">
+                  <h3 className="text-lg font-bold text-fg group-hover:text-accent transition-colors truncate">
                     {localize(exp.role, language)}
                   </h3>
                 </div>
-                <span className="text-[10px] font-mono tracking-widest text-white/60 uppercase whitespace-nowrap">
+                <span className="text-[10px] font-mono tracking-widest text-fg-subtle uppercase whitespace-nowrap">
                   {exp.period}
                 </span>
               </div>
 
-              <div className="text-sm font-medium text-white/75 mb-3 font-display italic">
+              <div className="text-sm font-medium text-fg-muted mb-3 font-display italic">
                 {localize(exp.company, language)}
               </div>
 
-              <p className="text-gray-300 font-light leading-relaxed text-sm max-w-md">
+              <p className="text-body font-light leading-relaxed text-sm max-w-md">
                 {localize(exp.description, language)}
               </p>
 
@@ -66,7 +66,7 @@ export function Experience() {
                   {exp.technologies.map((tech) => (
                     <li
                       key={tech}
-                      className="px-2 py-0.5 text-[10px] uppercase tracking-widest font-black bg-white/5 text-white/60 border border-white/10 rounded"
+                      className="px-2 py-0.5 text-[10px] uppercase tracking-widest font-black bg-tint-3 text-fg-subtle border border-line rounded"
                     >
                       {tech}
                     </li>
@@ -74,7 +74,7 @@ export function Experience() {
                 </ul>
               )}
 
-              <div className="mt-10 h-px w-full bg-white/10" aria-hidden="true" />
+              <div className="mt-10 h-px w-full bg-line" aria-hidden="true" />
             </motion.li>
           ))}
         </ol>

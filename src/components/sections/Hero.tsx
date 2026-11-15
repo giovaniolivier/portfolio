@@ -35,13 +35,13 @@ export function Hero() {
         >
           <span className="section-label">{t.hero.status}</span>
 
-          <h1 className="text-4xl md:text-6xl font-bold leading-[0.9] tracking-tighter text-white mb-6 text-gradient uppercase">
+          <h1 className="text-4xl md:text-6xl font-bold leading-[0.9] tracking-tighter text-fg mb-6 text-gradient uppercase">
             {t.hero.title1} <br />
-            <span className="italic font-light text-white/55">{t.hero.title2}</span> <br />
+            <span className="italic font-light text-fg-subtle">{t.hero.title2}</span> <br />
             {t.hero.title3}
           </h1>
 
-          <p className="text-sm md:text-base text-gray-300 max-w-lg mx-auto mb-8 leading-relaxed font-light">
+          <p className="text-sm md:text-base text-body max-w-lg mx-auto mb-8 leading-relaxed font-light">
             {t.hero.description}
           </p>
 
@@ -56,18 +56,18 @@ export function Hero() {
             </a>
           </div>
 
-          <dl className="grid grid-cols-2 md:grid-cols-4 gap-4 py-5 border-y border-white/10">
+          <dl className="grid grid-cols-2 md:grid-cols-4 gap-4 py-5 border-y border-line">
             {metrics.map((m) => (
               <div key={m.label} className="text-center flex flex-col-reverse">
-                <dt className="text-[10px] uppercase tracking-widest font-mono text-gray-400">{m.label}</dt>
-                <dd className="text-base font-display font-bold text-white mb-0.5">{m.value}</dd>
+                <dt className="text-[10px] uppercase tracking-widest font-mono text-body-muted">{m.label}</dt>
+                <dd className="text-base font-display font-bold text-fg mb-0.5">{m.value}</dd>
               </div>
             ))}
           </dl>
 
           <a
             href={profile.links.cv}
-            className="inline-block mt-6 text-[10px] uppercase tracking-widest text-white/60 hover:text-accent transition-colors"
+            className="inline-block mt-6 text-[10px] uppercase tracking-widest text-fg-subtle hover:text-accent transition-colors"
           >
             {t.hero.ctaResume} <span aria-hidden="true">→</span>
           </a>
@@ -75,14 +75,14 @@ export function Hero() {
       </motion.div>
 
       <div className="absolute bottom-8 left-8 hidden lg:block" aria-hidden="true">
-        <div className="flex items-center gap-3 text-[10px] font-mono uppercase tracking-[0.3em] text-white/55">
-          <div className="w-6 h-px bg-white/35" />
+        <div className="flex items-center gap-3 text-[10px] font-mono uppercase tracking-[0.3em] text-fg-subtle">
+          <div className="w-6 h-px bg-line-strong" />
           {t.common.scroll}
         </div>
       </div>
 
       <div className="absolute bottom-8 right-8 hidden lg:block" aria-hidden="true">
-        <div className="text-[10px] font-mono tracking-widest text-white/55">
+        <div className="text-[10px] font-mono tracking-widest text-fg-subtle">
           [ {profile.location.coords} ]
         </div>
       </div>
