@@ -1,5 +1,5 @@
 import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react';
-import { ArrowRight, Mail } from 'lucide-react';
+import { ArrowRight, FileText, Mail } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 import { profile } from '../../constants/profile';
 
@@ -12,10 +12,10 @@ export function Hero() {
   const scale = useTransform(scrollY, [0, 300], [1, 0.95]);
 
   const metrics = [
-    { value: t.hero.metrics.senior, label: t.hero.metrics.expertise },
     { value: `${profile.stats.years} ${t.hero.metrics.yearsUnit}`, label: t.hero.metrics.experience },
     { value: profile.stats.projects, label: t.hero.metrics.projectsLabel },
-    { value: t.hero.metrics.available, label: t.hero.metrics.availability },
+    { value: t.hero.metrics.stack, label: t.hero.metrics.stackLabel },
+    { value: t.hero.metrics.platforms, label: t.hero.metrics.platformsLabel },
   ];
 
   return (
@@ -41,14 +41,19 @@ export function Hero() {
             {t.hero.title3}
           </h1>
 
-          <p className="text-sm md:text-base text-body max-w-lg mx-auto mb-8 leading-relaxed font-light">
+          <p className="text-sm md:text-base text-body max-w-xl mx-auto mb-8 leading-relaxed font-light">
             {t.hero.description}
           </p>
 
+          {/* Projets d'abord ; le CV juste après, c'est l'action n°2 d'un recruteur. */}
           <div className="flex flex-wrap justify-center gap-3 mb-12">
             <a href="#projects" className="btn-primary flex items-center gap-2">
               {t.hero.ctaProjects}
               <ArrowRight size={14} aria-hidden="true" />
+            </a>
+            <a href={profile.links.cv} className="btn-secondary flex items-center gap-2">
+              <FileText size={14} aria-hidden="true" />
+              {t.hero.ctaResume}
             </a>
             <a href="#contact" className="btn-secondary flex items-center gap-2">
               <Mail size={14} aria-hidden="true" />
@@ -64,28 +69,8 @@ export function Hero() {
               </div>
             ))}
           </dl>
-
-          <a
-            href={profile.links.cv}
-            className="inline-block mt-6 text-[11px] uppercase tracking-widest text-fg-subtle hover:text-accent transition-colors"
-          >
-            {t.hero.ctaResume} <span aria-hidden="true">→</span>
-          </a>
         </motion.div>
       </motion.div>
-
-      <div className="absolute bottom-8 left-8 hidden lg:block" aria-hidden="true">
-        <div className="flex items-center gap-3 text-[11px] font-mono uppercase tracking-[0.15em] text-fg-subtle">
-          <div className="w-6 h-px bg-line-strong" />
-          {t.common.scroll}
-        </div>
-      </div>
-
-      <div className="absolute bottom-8 right-8 hidden lg:block" aria-hidden="true">
-        <div className="text-[11px] font-mono tracking-widest text-fg-subtle">
-          [ {profile.location.coords} ]
-        </div>
-      </div>
 
       <div className="noise-bg absolute inset-0 mix-blend-soft-light opacity-50" aria-hidden="true" />
     </section>

@@ -15,7 +15,6 @@ export const profile = {
     label: 'Antananarivo, Madagascar',
     city: 'Antananarivo',
     country: 'Madagascar',
-    coords: '[-18.8792° S, 47.5079° E]',
   },
   links: {
     github: 'https://github.com/giovaniolivier',

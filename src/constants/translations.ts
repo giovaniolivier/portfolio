@@ -31,23 +31,23 @@ const fr = {
     liveDemo: 'Démo en ligne',
   },
   hero: {
-    status: 'Disponible pour de nouveaux projets',
-    title1: 'CONCEVOIR',
-    title2: 'DEMAIN',
-    title3: 'PAR LE CODE.',
+    status: 'Disponible · CDI, CDD ou freelance',
+    title1: 'DU CONCEPT',
+    title2: 'À LA PROD,',
+    title3: 'WEB & MOBILE.',
     description:
-      'Développeur full-stack — j’imagine et je livre des apps web et mobiles (React, Node, API) jusqu’au déploiement.',
-    ctaProjects: 'Découvrir mes projets',
+      'Développeur full-stack, je conçois et livre des applications web et mobiles de bout en bout, avec React, Next.js, React Native et Node.js. Ouvert à un poste comme à des missions freelance.',
+    ctaProjects: 'Voir mes projets',
     ctaContact: 'Me contacter',
-    ctaResume: 'Télécharger CV',
+    ctaResume: 'Voir mon CV',
     metrics: {
-      senior: 'Full Stack',
-      expertise: 'Spécialité',
-      yearsUnit: 'Ans',
+      yearsUnit: 'ans',
       experience: 'Expérience',
-      projectsLabel: 'Projets réalisés',
-      available: 'Disponible',
-      availability: 'Disponibilité',
+      projectsLabel: 'Projets livrés',
+      stack: 'React · Node',
+      stackLabel: 'Stack principale',
+      platforms: 'Web & mobile',
+      platformsLabel: 'Plateformes',
     },
   },
   about: {
@@ -76,7 +76,7 @@ const fr = {
       frontend: 'Frontend',
       backend: 'Backend',
       database: 'Bases de données',
-      tools: 'CMS & Outils',
+      tools: 'Outils',
     },
   },
   projects: {
@@ -98,7 +98,7 @@ const fr = {
     label: 'Contact',
     title1: 'PARLONS',
     title2: 'PROJET.',
-    description: 'Que vous ayez une idée innovante ou un défi technique complexe, je suis prêt à lui donner vie.',
+    description: 'Un poste à pourvoir ou un projet à lancer ? Écrivez-moi, je vous réponds rapidement.',
     direct: 'Message Direct',
     social: 'Réseaux Sociaux',
     location: 'Localisation',
@@ -119,9 +119,6 @@ const fr = {
       subject: 'Contact portfolio —',
     },
   },
-  common: {
-    scroll: 'Défiler pour explorer',
-  },
   footer: {
     rights: 'Tous droits réservés.',
   },
@@ -135,7 +132,7 @@ const fr = {
     skillsTitle: 'Compétences',
     educationTitle: 'Formation',
     summary:
-      'Développeur Web Full Stack basé à Antananarivo. Je conçois des applications web et mobiles claires, performantes et orientées utilisateur avec React, Next.js, React Native et Node.js.',
+      'Développeur Web Full Stack basé à Antananarivo. Je conçois des applications web et mobiles claires, performantes et orientées utilisateur avec React, Next.js, React Native et Node.js. Ouvert à un poste en CDI ou CDD comme à des missions freelance.',
   },
 };
 
@@ -165,23 +162,23 @@ const en: Translations = {
     liveDemo: 'Live demo',
   },
   hero: {
-    status: 'Available for new projects',
-    title1: 'DESIGNING',
-    title2: 'TOMORROW',
-    title3: 'THROUGH CODE.',
+    status: 'Available · full-time or freelance',
+    title1: 'FROM CONCEPT',
+    title2: 'TO PRODUCTION,',
+    title3: 'WEB & MOBILE.',
     description:
-      'Full-stack developer — I design and ship web & mobile apps (React, Node, APIs) through to deployment.',
-    ctaProjects: 'Explore projects',
+      'Full-stack developer, I design and ship web and mobile applications end to end with React, Next.js, React Native, and Node.js. Open to full-time or contract roles as well as freelance work.',
+    ctaProjects: 'View my projects',
     ctaContact: 'Contact me',
-    ctaResume: 'Download CV',
+    ctaResume: 'View my CV',
     metrics: {
-      senior: 'Full Stack',
-      expertise: 'Specialty',
-      yearsUnit: 'Yrs',
+      yearsUnit: 'yrs',
       experience: 'Experience',
-      projectsLabel: 'Projects built',
-      available: 'Available',
-      availability: 'Availability',
+      projectsLabel: 'Projects shipped',
+      stack: 'React · Node',
+      stackLabel: 'Main stack',
+      platforms: 'Web & mobile',
+      platformsLabel: 'Platforms',
     },
   },
   about: {
@@ -210,7 +207,7 @@ const en: Translations = {
       frontend: 'Frontend',
       backend: 'Backend',
       database: 'Databases',
-      tools: 'CMS & Tools',
+      tools: 'Tools',
     },
   },
   projects: {
@@ -232,7 +229,7 @@ const en: Translations = {
     label: 'Contact',
     title1: "LET'S TALK",
     title2: 'PROJECT.',
-    description: 'Whether you have an innovative idea or a complex technical challenge, I am ready to bring it to life.',
+    description: 'A role to fill or a project to launch? Drop me a line and I will get back to you quickly.',
     direct: 'Direct Message',
     social: 'Social Networks',
     location: 'Location',
@@ -253,9 +250,6 @@ const en: Translations = {
       subject: 'Portfolio contact —',
     },
   },
-  common: {
-    scroll: 'Scroll to explore',
-  },
   footer: {
     rights: 'All rights reserved.',
   },
@@ -269,7 +263,7 @@ const en: Translations = {
     skillsTitle: 'Skills',
     educationTitle: 'Education',
     summary:
-      'Full Stack Web Developer based in Antananarivo. I build clear, performant, user-focused web and mobile applications with React, Next.js, React Native, and Node.js.',
+      'Full Stack Web Developer based in Antananarivo. I build clear, performant, user-focused web and mobile applications with React, Next.js, React Native, and Node.js. Open to full-time or fixed-term roles as well as freelance work.',
   },
 };
 
