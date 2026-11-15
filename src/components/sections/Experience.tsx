@@ -8,7 +8,7 @@ export function Experience() {
   const { t, language } = useApp();
 
   return (
-    <SectionWrapper id="experience" className="pt-24! md:pt-32!">
+    <SectionWrapper id="experience">
       <div className="flex flex-col md:flex-row gap-12">
         <div className="md:w-[38%] sticky top-24 h-fit">
           <span className="section-label">{t.experience.label}</span>
@@ -29,7 +29,7 @@ export function Experience() {
           </div>
         </div>
 
-        <ol className="md:w-[62%] space-y-10">
+        <ol className="md:w-[62%] space-y-8">
           {EXPERIENCES.map((exp, idx) => (
             <motion.li
               key={exp.id}
@@ -75,7 +75,7 @@ export function Experience() {
                 </ul>
               )}
 
-              <div className="mt-10 h-px w-full bg-line" aria-hidden="true" />
+              <div className="mt-8 h-px w-full bg-line" aria-hidden="true" />
             </motion.li>
           ))}
         </ol>

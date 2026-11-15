@@ -1,6 +1,6 @@
-import { useState, type FormEvent } from 'react';
+import { useState, type FormEvent, type ReactNode } from 'react';
 import { SectionWrapper } from '../ui/SectionWrapper';
-import { Mail, MessageSquare, Send } from 'lucide-react';
+import { Linkedin, Mail, MapPin, Send } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useApp } from '../../context/AppContext';
 import { profile } from '../../constants/profile';
@@ -17,7 +17,26 @@ type Status = 'idle' | 'sending' | 'success' | 'mailto' | 'error' | 'invalid';
 const inputClass =
   'w-full bg-transparent border-b border-line py-2.5 text-sm text-fg placeholder:text-placeholder focus:outline-none focus:border-accent transition-colors font-light';
 const labelClass = 'text-[11px] font-bold uppercase tracking-[0.15em] text-fg-subtle ml-0.5';
-const cardLabelClass = 'text-[11px] uppercase font-bold tracking-[0.15em] text-fg-subtle mb-1';
+const rowLabelClass = 'text-[11px] uppercase font-bold tracking-[0.15em] text-fg-subtle mb-0.5';
+const linkClass = 'text-sm font-medium text-fg hover:text-accent transition-colors';
+
+/** Une ligne de coordonnées : pastille d'icône, libellé, valeur(s). */
+function ContactRow({ icon, label, children }: { icon: ReactNode; label: string; children: ReactNode }) {
+  return (
+    <li className="flex items-start gap-4">
+      <span
+        className="w-10 h-10 shrink-0 rounded-xl bg-tint-3 border border-line flex items-center justify-center text-accent"
+        aria-hidden="true"
+      >
+        {icon}
+      </span>
+      <div className="min-w-0 pt-0.5">
+        <div className={rowLabelClass}>{label}</div>
+        {children}
+      </div>
+    </li>
+  );
+}
 
 /** Astérisque visuel ; l'attribut `required` informe déjà les lecteurs d'écran. */
 function RequiredMark() {
@@ -80,84 +99,48 @@ export function Contact() {
   const sending = status === 'sending';
 
   return (
-    <SectionWrapper id="contact" outerClassName="border-t border-line" className="pt-24! md:pt-32! pb-28! md:pb-36!">
-      <div className="max-w-2xl mx-auto text-center mb-12">
-        <span className="section-label">{t.contact.label}</span>
-        <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-4 leading-none uppercase">
-          {t.contact.title1}{' '}
-          <span className="text-fg-dim italic font-light">{t.contact.title2}</span>
-        </h2>
-        <p className="text-sm md:text-base text-body font-light max-w-md mx-auto leading-relaxed">
-          {t.contact.description}
-        </p>
-      </div>
+    <SectionWrapper id="contact" outerClassName="border-t border-line">
+      {/* Deux colonnes : présentation et coordonnées à gauche, formulaire à droite. */}
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-10 md:gap-12 items-start">
+        <div className="md:col-span-2">
+          <span className="section-label">{t.contact.label}</span>
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-4 leading-[0.95] uppercase">
+            {t.contact.title1} <br />
+            <span className="text-fg-dim italic font-light">{t.contact.title2}</span>
+          </h2>
+          <p className="text-sm md:text-base text-body font-light leading-relaxed">{t.contact.description}</p>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
-        <div className="p-5 rounded-2xl bg-tint-3 border border-line hover:border-accent/30 transition-colors group">
-          <div className="w-9 h-9 rounded-xl bg-tint-3 flex items-center justify-center text-accent mb-4 group-hover:scale-110 transition-transform">
-            <Mail size={16} aria-hidden="true" />
-          </div>
-          <div className={cardLabelClass}>
-            {t.contact.direct}
-          </div>
-          <a
-            href={`mailto:${profile.email}`}
-            className="text-sm font-medium text-fg hover:text-accent transition-colors break-all"
-          >
-            {profile.email}
-          </a>
+          <ul className="mt-8 space-y-5">
+            <ContactRow icon={<Mail size={16} />} label={t.contact.direct}>
+              <a href={`mailto:${profile.email}`} className={`${linkClass} break-all`}>
+                {profile.email}
+              </a>
+            </ContactRow>
+            <ContactRow icon={<Linkedin size={16} />} label={t.contact.social}>
+              <span className="flex flex-wrap gap-x-3">
+                <a href={profile.links.linkedin} target="_blank" rel="noopener noreferrer" className={linkClass}>
+                  LinkedIn
+                </a>
+                <span className="text-fg-faint" aria-hidden="true">/</span>
+                <a href={profile.links.github} target="_blank" rel="noopener noreferrer" className={linkClass}>
+                  GitHub
+                </a>
+              </span>
+            </ContactRow>
+            <ContactRow icon={<MapPin size={16} />} label={t.contact.location}>
+              <span className="block text-sm font-medium text-fg">{profile.location.label}</span>
+              <a href={`tel:${profile.phone.replace(/\s/g, '')}`} className="text-sm text-body-muted hover:text-accent transition-colors">
+                {profile.phone}
+              </a>
+            </ContactRow>
+          </ul>
         </div>
-
-        <div className="p-5 rounded-2xl bg-tint-3 border border-line hover:border-accent/30 transition-colors group">
-          <div className="w-9 h-9 rounded-xl bg-tint-3 flex items-center justify-center text-accent mb-4 group-hover:scale-110 transition-transform">
-            <MessageSquare size={16} aria-hidden="true" />
-          </div>
-          <div className={cardLabelClass}>
-            {t.contact.social}
-          </div>
-          <div className="flex flex-wrap gap-x-3 text-sm font-medium text-fg">
-            <a
-              href={profile.links.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="py-1 hover:text-accent transition-colors"
-            >
-              LinkedIn
-            </a>
-            <span className="py-1 text-fg-faint" aria-hidden="true">/</span>
-            <a
-              href={profile.links.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="py-1 hover:text-accent transition-colors"
-            >
-              GitHub
-            </a>
-          </div>
-        </div>
-
-        <div className="p-5 rounded-2xl bg-tint-3 border border-line hover:border-accent/30 transition-colors group">
-          <div className="w-9 h-9 rounded-xl bg-tint-3 flex items-center justify-center text-accent mb-4 group-hover:scale-110 transition-transform">
-            <Send size={16} aria-hidden="true" />
-          </div>
-          <div className={cardLabelClass}>
-            {t.contact.location}
-          </div>
-          <div className="text-sm font-medium text-fg">{profile.location.label}</div>
-          <a
-            href={`tel:${profile.phone.replace(/\s/g, '')}`}
-            className="text-xs text-body-muted hover:text-accent transition-colors mt-1 inline-block"
-          >
-            {profile.phone}
-          </a>
-        </div>
-      </div>
 
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="max-w-xl mx-auto glass-panel p-6 md:p-8 rounded-2xl"
+        className="md:col-span-3 glass-panel p-6 md:p-8 rounded-2xl"
       >
         <form className="space-y-6" onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -242,7 +225,7 @@ export function Contact() {
         </form>
 
         {/* Hors du flux du formulaire : n'occupe aucune place tant qu'il est vide. */}
-        <p role="status" aria-live="polite" className="text-center text-xs font-light [&:not(:empty)]:mt-4">
+        <p role="status" aria-live="polite" className="text-center text-xs font-light not-empty:mt-4">
           {status === 'success' && <span className="text-accent">{t.contact.form.success}</span>}
           {status === 'mailto' && <span className="text-body">{t.contact.form.mailtoOpened}</span>}
           {status === 'invalid' && <span className="text-danger">{t.contact.form.invalid}</span>}
@@ -256,6 +239,7 @@ export function Contact() {
           )}
         </p>
       </motion.div>
+      </div>
     </SectionWrapper>
   );
 }

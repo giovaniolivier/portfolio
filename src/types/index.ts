@@ -24,6 +24,8 @@ export type SkillCategory = 'Frontend' | 'Backend' | 'Database' | 'Tools';
 export interface Skill {
   name: string;
   category: SkillCategory;
+  /** Fait partie de la stack principale : mis en avant dans la section Compétences. */
+  core?: boolean;
 }
 
 export interface Experience {

@@ -17,7 +17,7 @@ interface SectionWrapperProps {
 export function SectionWrapper({ children, id, className = '', outerClassName = '' }: SectionWrapperProps) {
   return (
     <section id={id} className={`relative scroll-mt-16 ${outerClassName}`}>
-      <div className={`py-20 md:py-28 px-5 md:px-10 max-w-5xl mx-auto ${className}`}>{children}</div>
+      <div className={`py-16 md:py-24 px-5 md:px-10 max-w-5xl mx-auto ${className}`}>{children}</div>
     </section>
   );
 }

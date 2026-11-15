@@ -78,6 +78,7 @@ const fr = {
       database: 'Bases de données',
       tools: 'Outils',
     },
+    coreLegend: 'Stack principale',
   },
   projects: {
     label: 'Projets',
@@ -99,8 +100,8 @@ const fr = {
     title1: 'PARLONS',
     title2: 'PROJET.',
     description: 'Un poste à pourvoir ou un projet à lancer ? Écrivez-moi, je vous réponds rapidement.',
-    direct: 'Message Direct',
-    social: 'Réseaux Sociaux',
+    direct: 'E-mail',
+    social: 'Réseaux',
     location: 'Localisation',
     form: {
       name: 'Nom complet',
@@ -209,6 +210,7 @@ const en: Translations = {
       database: 'Databases',
       tools: 'Tools',
     },
+    coreLegend: 'Main stack',
   },
   projects: {
     label: 'Projects',
@@ -230,8 +232,8 @@ const en: Translations = {
     title1: "LET'S TALK",
     title2: 'PROJECT.',
     description: 'A role to fill or a project to launch? Drop me a line and I will get back to you quickly.',
-    direct: 'Direct Message',
-    social: 'Social Networks',
+    direct: 'Email',
+    social: 'Networks',
     location: 'Location',
     form: {
       name: 'Full name',
