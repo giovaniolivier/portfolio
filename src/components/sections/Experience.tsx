@@ -1,11 +1,18 @@
+import { useState } from 'react';
+import { ChevronDown } from 'lucide-react';
 import { SectionWrapper } from '../ui/SectionWrapper';
 import { EXPERIENCES } from '../../constants/data';
 import { motion } from 'motion/react';
 import { useApp } from '../../context/AppContext';
 import { localize } from '../../lib/localize';
 
+const LIST_ID = 'experience-list';
+
 export function Experience() {
   const { t, language } = useApp();
+  // Mobile uniquement : les stages sont repliés pour raccourcir la page.
+  const [showInternships, setShowInternships] = useState(false);
+  const internshipCount = EXPERIENCES.filter((e) => e.internship).length;
 
   return (
     <SectionWrapper id="experience">
@@ -29,7 +36,8 @@ export function Experience() {
           </div>
         </div>
 
-        <ol className="md:w-[62%] space-y-8">
+        <div className="md:w-[62%]">
+        <ol id={LIST_ID} className="space-y-8">
           {EXPERIENCES.map((exp, idx) => (
             <motion.li
               key={exp.id}
@@ -37,7 +45,7 @@ export function Experience() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '0px 0px -10% 0px' }}
               transition={{ duration: 0.4, ease: 'easeOut' }}
-              className="group relative"
+              className={`group relative ${exp.internship && !showInternships ? 'hidden md:block' : ''}`}
             >
               {/* L'intitulé passe à la ligne au lieu d'être tronqué (mobile). */}
               <div className="flex items-start justify-between gap-3 mb-2">
@@ -79,6 +87,24 @@ export function Experience() {
             </motion.li>
           ))}
         </ol>
+
+        {internshipCount > 0 && (
+          <button
+            type="button"
+            onClick={() => setShowInternships((v) => !v)}
+            aria-expanded={showInternships}
+            aria-controls={LIST_ID}
+            className="md:hidden mt-6 w-full h-11 inline-flex items-center justify-center gap-2 rounded-full border border-line bg-tint-2 text-sm font-medium text-fg-muted hover:text-fg transition-colors"
+          >
+            {showInternships ? t.experience.hideInternships : `${t.experience.showInternships} (${internshipCount})`}
+            <ChevronDown
+              size={16}
+              aria-hidden="true"
+              className={`transition-transform ${showInternships ? 'rotate-180' : ''}`}
+            />
+          </button>
+        )}
+        </div>
       </div>
     </SectionWrapper>
   );

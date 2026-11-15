@@ -1,5 +1,6 @@
+import { useId, useState } from 'react';
 import { motion } from 'motion/react';
-import { ArrowUpRight, Github } from 'lucide-react';
+import { ArrowUpRight, ChevronDown, Github } from 'lucide-react';
 import type { Project } from '../../types';
 import { useApp } from '../../context/AppContext';
 import { localize } from '../../lib/localize';
@@ -20,6 +21,9 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
   const description = localize(project.description, language);
   const highlights = project.highlights?.[language] ?? [];
   const hasBothRepos = Boolean(project.githubUrl && project.githubBackendUrl);
+  // Mobile uniquement : points clés repliés pour raccourcir la page (toujours visibles dès md).
+  const [showHighlights, setShowHighlights] = useState(false);
+  const highlightsId = useId();
 
   return (
     <motion.article
@@ -96,7 +100,27 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
         <p className="text-body-muted font-light leading-relaxed text-sm mb-4 grow">{description}</p>
 
         {highlights.length > 0 && (
-          <div className="mb-4 p-4 rounded-lg bg-tint-2 border border-line-soft">
+          <button
+            type="button"
+            onClick={() => setShowHighlights((v) => !v)}
+            aria-expanded={showHighlights}
+            aria-controls={highlightsId}
+            className="md:hidden mb-4 -mt-1 self-start inline-flex items-center gap-1.5 py-2 text-[11px] uppercase font-bold tracking-[0.15em] text-accent"
+          >
+            {showHighlights ? t.projects.hideHighlights : `${t.projects.showHighlights} (${highlights.length})`}
+            <ChevronDown
+              size={14}
+              aria-hidden="true"
+              className={`transition-transform ${showHighlights ? 'rotate-180' : ''}`}
+            />
+          </button>
+        )}
+
+        {highlights.length > 0 && (
+          <div
+            id={highlightsId}
+            className={`mb-4 p-4 rounded-lg bg-tint-2 border border-line-soft ${showHighlights ? '' : 'hidden md:block'}`}
+          >
             <h4 className="text-[11px] uppercase font-bold tracking-[0.15em] text-accent mb-2">{t.projects.impact}</h4>
             <ul className="space-y-1.5">
               {highlights.map((item) => (

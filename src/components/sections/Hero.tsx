@@ -18,8 +18,9 @@ export function Hero() {
     { value: t.hero.metrics.platforms, label: t.hero.metrics.platformsLabel },
   ];
 
+  // Plein écran dès md ; sur mobile, hauteur du contenu pour laisser entrevoir la suite.
   return (
-    <section className="min-h-screen relative flex items-center justify-center pt-16 overflow-hidden bg-main">
+    <section className="relative flex items-center justify-center pt-28 pb-16 md:min-h-screen md:pt-16 md:pb-0 overflow-hidden bg-main">
       <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-screen aspect-square hero-glow blur-[100px]" />
       </div>

@@ -86,6 +86,8 @@ const fr = {
     title2: 'SÉLECTIONNÉS.',
     description: 'Une sélection de projets personnels et professionnels, du mobile au web, avec une attention particulière à l\'expérience utilisateur.',
     impact: 'Points clés',
+    showHighlights: 'Voir les points clés',
+    hideHighlights: 'Masquer les points clés',
     viewMore: 'Voir plus sur GitHub',
   },
   experience: {
@@ -94,6 +96,8 @@ const fr = {
     title2: 'CARRIÈRE.',
     focus: 'Formation',
     focusDesc: 'Master II en Informatique — EMIT, Université de Fianarantsoa (2023-2024).\nLicence en Informatique — EMIT, Université de Fianarantsoa (2021-2022).',
+    showInternships: 'Afficher les stages',
+    hideInternships: 'Masquer les stages',
   },
   contact: {
     label: 'Contact',
@@ -218,6 +222,8 @@ const en: Translations = {
     title2: 'PROJECTS.',
     description: 'A selection of personal and professional projects, from mobile to web, with a strong focus on user experience.',
     impact: 'Highlights',
+    showHighlights: 'Show highlights',
+    hideHighlights: 'Hide highlights',
     viewMore: 'View more on GitHub',
   },
   experience: {
@@ -226,6 +232,8 @@ const en: Translations = {
     title2: 'TIMELINE.',
     focus: 'Education',
     focusDesc: "Master's II in Computer Science — EMIT, University of Fianarantsoa (2023-2024).\nBachelor's in Computer Science — EMIT, University of Fianarantsoa (2021-2022).",
+    showInternships: 'Show internships',
+    hideInternships: 'Hide internships',
   },
   contact: {
     label: 'Contact',
