@@ -17,16 +17,16 @@ export const profile = {
     country: 'Madagascar',
     coords: '[-18.8792° S, 47.5079° E]',
   },
-  since: 2021,
   links: {
     github: 'https://github.com/giovaniolivier',
     linkedin: 'https://www.linkedin.com/in/lovasoa-heriniaina-olivier-8bb193317',
     cv: '/cv',
   },
+  /** Source unique des chiffres affichés (hero, profil). */
   stats: {
-    experiences: '02',
+    companies: '02',
     degrees: '02',
-    projects: '08+',
-    years: '4+',
+    projects: '4+',
+    years: 3,
   },
 } as const;

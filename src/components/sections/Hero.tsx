@@ -59,11 +59,11 @@ export function Hero() {
               <div className="text-[8px] uppercase tracking-widest font-mono text-gray-400">{t.hero.metrics.expertise}</div>
             </div>
             <div className="text-center">
-              <div className="text-base font-display font-bold text-white mb-0.5">{t.hero.metrics.years}</div>
+              <div className="text-base font-display font-bold text-white mb-0.5">{profile.stats.years} {t.hero.metrics.yearsUnit}</div>
               <div className="text-[8px] uppercase tracking-widest font-mono text-gray-400">{t.hero.metrics.experience}</div>
             </div>
             <div className="text-center">
-              <div className="text-base font-display font-bold text-white mb-0.5">{t.hero.metrics.projects}</div>
+              <div className="text-base font-display font-bold text-white mb-0.5">{profile.stats.projects}</div>
               <div className="text-[8px] uppercase tracking-widest font-mono text-gray-400">{t.hero.metrics.projectsLabel}</div>
             </div>
             <div className="text-center">

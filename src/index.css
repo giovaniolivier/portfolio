@@ -160,11 +160,6 @@ html.light {
     color: #5b21b6;
   }
 
-  .loader-text {
-    color: var(--page-fg);
-    transition: color 0.4s ease;
-  }
-
   .hero-glow {
     background: radial-gradient(circle at center, var(--hero-glow) 0%, transparent 55%);
   }

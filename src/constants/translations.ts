@@ -24,9 +24,8 @@ export const translations = {
       metrics: {
         senior: 'Full Stack',
         expertise: 'Spécialité',
-        years: '3 Ans',
+        yearsUnit: 'Ans',
         experience: 'Expérience',
-        projects: '08+',
         projectsLabel: 'Projets réalisés',
         available: 'Disponible',
         availability: 'Disponibilité',
@@ -36,12 +35,12 @@ export const translations = {
       label: 'Profil',
       title1: "L'EXCELLENCE",
       title2: 'DIGITALE.',
-      since: 'Depuis 2021',
+      experienceSuffix: 'ans d\'expérience',
       location: 'Antananarivo, Madagascar',
       intro: "Développeur Web Full Stack, je conçois des <span class=\"text-accent italic\">applications web et mobiles</span> claires, <span class=\"text-white font-bold\">performantes et orientées utilisateur.</span>",
       p1: "Formé à l'EMIT (Master II & Licence en Informatique), je maîtrise React, Next.js, React Native et Node.js pour livrer des produits de bout en bout.",
       p2: "J'ai travaillé avec Relia Consulting, AZ+ et des institutions locales — en passant par des outils métiers sur mesure.",
-      stats1: 'Expériences pro',
+      stats1: 'Entreprises',
       stats2: 'Diplômes',
     },
     skills: {
@@ -158,6 +157,12 @@ export const translations = {
         message: 'Votre Message',
         messagePlaceholder: 'Décrivez votre vision...',
         submit: 'Démarrer la collaboration',
+        sending: 'Envoi en cours…',
+        success: 'Merci ! Votre message a bien été envoyé, je vous réponds rapidement.',
+        mailtoOpened: 'Votre messagerie s\'ouvre avec le message pré-rempli : il ne reste qu\'à l\'envoyer.',
+        error: 'L\'envoi a échoué. Écrivez-moi directement à',
+        invalid: 'Merci de remplir tous les champs.',
+        subject: 'Contact portfolio —',
       }
     },
     common: {
@@ -166,7 +171,6 @@ export const translations = {
     footer: {
       rights: 'Tous droits réservés.',
     },
-    loader: 'Initialisation de l\'expérience',
     cv: {
       back: 'Retour au portfolio',
       print: 'Télécharger PDF',
@@ -201,9 +205,8 @@ export const translations = {
       metrics: {
         senior: 'Full Stack',
         expertise: 'Specialty',
-        years: '4+ Yrs',
+        yearsUnit: 'Yrs',
         experience: 'Experience',
-        projects: '08+',
         projectsLabel: 'Projects built',
         available: 'Available',
         availability: 'Availability',
@@ -213,12 +216,12 @@ export const translations = {
       label: 'Profile',
       title1: 'DIGITAL',
       title2: 'EXCELLENCE.',
-      since: 'Since 2021',
+      experienceSuffix: 'years of experience',
       location: 'Antananarivo, Madagascar',
       intro: "As a Full Stack Web Developer, I build <span class=\"text-accent italic\">web and mobile applications</span> that are <span class=\"text-white font-bold\">clear, performant, and user-focused.</span>",
       p1: "Graduated from EMIT (Master's II & Bachelor's in Computer Science), I work with React, Next.js, React Native, and Node.js to deliver end-to-end products.",
-      p2: "I've collaborated with Relia Consulting, Odace France, and local institutions — from mobile apps to WordPress and custom business tools.",
-      stats1: 'Professional roles',
+      p2: "I've worked with Relia Consulting, AZ+, and local institutions — including custom business tools.",
+      stats1: 'Companies',
       stats2: 'Degrees',
     },
     skills: {
@@ -335,6 +338,12 @@ export const translations = {
         message: 'Your Message',
         messagePlaceholder: 'Describe your vision...',
         submit: 'Start Collaboration',
+        sending: 'Sending…',
+        success: 'Thank you! Your message has been sent, I will get back to you shortly.',
+        mailtoOpened: 'Your email app is opening with the message pre-filled: just hit send.',
+        error: 'Sending failed. Email me directly at',
+        invalid: 'Please fill in all fields.',
+        subject: 'Portfolio contact —',
       }
     },
     common: {
@@ -343,7 +352,6 @@ export const translations = {
     footer: {
       rights: 'All rights reserved.',
     },
-    loader: 'Initializing experience',
     cv: {
       back: 'Back to portfolio',
       print: 'Download PDF',

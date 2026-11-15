@@ -15,7 +15,7 @@ export function About() {
           </h2>
           <div className="w-16 h-px bg-white/20 mb-5" />
           <div className="flex gap-6 font-mono text-[9px] uppercase tracking-[0.25em] text-white/40">
-            <div>[ {t.about.since} ]</div>
+            <div>[ {profile.stats.years} {t.about.experienceSuffix} ]</div>
             <div>[ {t.about.location} ]</div>
           </div>
         </div>
@@ -33,7 +33,7 @@ export function About() {
 
           <div className="pt-5 border-t border-white/5 grid grid-cols-2 gap-8">
             <div>
-              <div className="text-2xl font-display font-bold text-white mb-1 tracking-tighter italic">{profile.stats.experiences}</div>
+              <div className="text-2xl font-display font-bold text-white mb-1 tracking-tighter italic">{profile.stats.companies}</div>
               <p className="text-[9px] uppercase font-bold tracking-[0.2em] text-gray-500">{t.about.stats1}</p>
             </div>
             <div>
